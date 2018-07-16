@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <title>下载页面</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="apple-mobile-web-app-title" content="Download">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <style>
+        p{
+            line-height: 1.5;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<h3 style="text-align: center">系统提示</h3>
+<p id="weixin">系统检测到您当前使用微信打开，请<span style="color: red">点击右上角“更多...”按钮 -> 选择“在浏览器打开”</span>，进行下载。</p>
+<p id="download">正准备下载该应用...</p>
+
+<script>
+    //如果不是用微信打开的，则直接下载
+    if ((/MicroMessenger/i).test(navigator.userAgent)) {
+        document.getElementById('weixin').style.display='block';
+    }else{
+        document.getElementById('download').style.display='block';
+        location.href='http://112.74.160.61:8081/app/KidCloud.apk';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+.feedback-reply-modal{
+    .ant-modal-body{
+        padding:0;
+    }
+
+    .reply-wrapper{
+        height:400px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background: #eee;
+    }
+
+    .reply-list{
+        margin:16px;
+
+        li{
+            margin-top:24px;
+
+            &:first-of-type{
+                margin-top:0;
+            }
+
+            &.left{
+                .bd{
+                    margin-left:50px;
+                }
+            }
+
+            &.right{
+                .bd{
+                    text-align: right;
+                    margin-right:50px;
+                }
+
+                .msg{
+                    background: #40cdff;
+                }
+            }
+        }
+
+        .msg{
+            display: inline-block;
+            background: white;
+            max-width: 70%;
+            border-radius: 5px;
+            padding: 12px;
+            word-wrap: break-word;
+            word-break: break-all;
+
+            img{
+                max-width: 100%;
+            }
+        }
+    }
+
+    textarea{
+        width: 100%;
+        resize: none;
+        border: none;
+        border-top: 1px solid #ccc;
+        padding: 8px;
+        outline: none;
+        height: 115px;
+    }
+}

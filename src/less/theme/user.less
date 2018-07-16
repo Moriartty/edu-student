@@ -1,0 +1,123 @@
+@leftWidth:300px;
+
+.user{
+    .block-right{
+        margin-left:@leftWidth;
+
+        .header{
+            position: relative;
+
+            .desc{
+                margin-right: 100px;
+            }
+
+            .actions{
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }
+    }
+
+    .clear{
+        font-size: 14px;
+        top: 5px;
+        left: -30px;
+        z-index: 10;
+        position: absolute;
+        width: 30px;
+        color: #bbb;
+        text-align: center;
+    }
+}
+
+@avatarSize:72px;
+.user-info{
+    font-size: 14px;
+
+    .hd{
+        position: relative;
+
+        .ant-avatar{
+            width: @avatarSize;
+            height: @avatarSize;
+            float: left;
+        }
+    }
+
+    .hd-content{
+        margin-left: @avatarSize+8px;
+    }
+
+    .detail-list>li{
+        padding:6px 0;
+        border-bottom:1px dashed #CCC;
+
+        label{
+            color: #888;
+            font-weight: normal;
+            margin-bottom:0;
+        }
+    }
+}
+
+.user-org{
+    width: @leftWidth;
+    overflow: auto;
+    position: relative;
+    font-size: 14px;
+    box-shadow: 1px 0 3px rgba(0,0,0,.2);
+    z-index: 1;
+
+    li{
+        border-top:1px dashed #ccc;
+    }
+
+    .node-name{
+        position: relative;
+        line-height:2;
+        padding-left: 10px;
+
+        .actions{
+            position: absolute;
+            top: 0;
+            right:3px;
+            display: none;
+        }
+
+        &:hover{
+            background: @primary-1;
+
+            .actions{
+                display: block;
+            }
+        }
+
+        &.selected{
+            background: @primary-2;
+            color: @primary-color;
+        }
+    }
+
+    .indent {
+        display: inline-block;
+        width: 20px;
+        text-align: right;
+        margin-right: 3px;
+        color: #aaa;
+
+        a{
+            color: #aaa;
+        }
+    }
+
+    .cover{
+        position: absolute;
+        top:0;
+        left:0;
+        bottom:0;
+        right:0;
+        z-index: 10;
+        background: rgba(255,255,255,.6);
+    }
+}

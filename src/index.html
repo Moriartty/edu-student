@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
+    <meta name="renderer" content="webkit">
+    <link href="css/nprogress.css" rel="stylesheet">
+    <link href="css/cropper.min.css" rel="stylesheet">
+    <style>
+        .loader-x {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            color: inherit;
+            vertical-align: middle;
+            border-top: .2em solid currentcolor;
+            border-right: .2em solid transparent;
+            -webkit-animation: loader-x 1s linear infinite;
+            animation: loader-x 1s linear infinite;
+            border-radius: 100%;
+            position: relative;
+        }
+
+        @-webkit-keyframes loader-x {
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes loader-x {
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="initLoading" style="position: fixed;left:0;right:0;top:0;bottom:0;z-index: 999;background: white">
+    <div style="text-align: center;margin-top:40vh;font-size: 16px;">
+        <span class="loader-x"></span> 资源加载中...
+    </div>
+</div>
+  <div id="container" class="full-height">
+  </div>
+  <script src="js/jquery.min.js" type="text/javascript" defer></script>
+</body>
+</html>

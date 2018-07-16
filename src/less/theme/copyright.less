@@ -1,0 +1,34 @@
+@copyrightHeight:30px;
+@copyrightBtnHeight:24px;
+
+.copyright {
+    position: relative;
+    text-align: center;
+    height:@copyrightHeight;
+    line-height: @copyrightHeight;
+    .bg-gradient(lighten(#eee, 5%), darken(#eee, 5%));
+    font-size: 14px;
+    -webkit-transition: left .2s;
+    transition: left .2s;
+    .layout-shadow;
+
+    .btn{
+        position: absolute;
+        top:(@copyrightHeight - @copyrightBtnHeight)/2;
+        border:1px solid #999;
+        color:inherit;
+        border-radius: 3px;
+        text-align: center;
+        width: 26px;
+        height:@copyrightBtnHeight;
+        line-height: @copyrightBtnHeight;
+
+        &:hover{
+            background: #ddd;
+        }
+    }
+}
+
+.goTop{
+    right:5px;
+}

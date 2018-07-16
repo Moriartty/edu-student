@@ -1,0 +1,78 @@
+@leftWidth:250px;
+
+.role-left{
+    width: @leftWidth;
+    float: left;
+
+    .ant-menu{
+        .ant-menu-item{
+            font-size: 16px;
+            border-bottom:1px dashed #ddd;
+            margin: 0;
+            height: 48px;
+            line-height: 48px;
+        }
+
+        .ant-menu-item-active{
+            background: @primary-1;
+        }
+    }
+}
+
+.role-right{
+    margin-left:@leftWidth;
+    padding:0 10px;
+    //border-left:1px dashed #ddd;
+
+    .header{
+        position: relative;
+        border-bottom:1px solid @primary-3;
+        padding-bottom:10px;
+        margin-bottom:10px;
+
+        .desc{
+            margin-right:80px;
+        }
+    }
+
+    .actions{
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+.role-menu{
+    position: relative;
+
+    label{
+        font-weight: normal;
+        margin:0;
+
+        //input{
+        //    position: relative;
+        //    top: 2px;
+        //    right: -1px;
+        //}
+
+        .ant-checkbox-wrapper{
+            margin-left:8px;
+
+            &+span{
+                padding-left:0;
+            }
+        }
+    }
+
+    .indent {
+        display: inline-block;
+        width: 42px;
+        text-align: right;
+    }
+
+    .save{
+        position: fixed;
+        bottom:40px;
+        right:20px;
+    }
+}
