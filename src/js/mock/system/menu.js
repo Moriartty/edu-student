@@ -8,162 +8,33 @@ module.exports = [
             'code':'0',
             'data':[
                 {
-                    id:100,
-                    name:'教学管理',
+                    id:1,
+                    name:'校园日常',
                     list:[
-                        {
-                            id:3,
-                            name:'设备管理',
-                            list:[
-                                {id:7, name:'设备信息', module:'device', functions:['CREATE', 'UPDATE', 'DELETE', 'DISABLE', 'IMPORT', 'LOG', 'TRANSFER']},
-                                {id:31, name:'设备库存', module:'inventory', functions:['SETTING', 'GOODS', 'GOODS_EDIT', 'LANE', 'HISTORY', 'EXPORT']},
-                                {id:2, name:'设备地图', module:'device-map', functions:['CREATE', 'UPDATE', 'DELETE']},
-                                {id:12, name:'故障信息', module:'trouble', functions:['CREATE', 'UPDATE', 'DELETE']},
-                                {id:45, name:'设备型号', module:'device-type', functions:['CREATE', 'UPDATE', 'DELETE', 'UPGRADE']}
-                            ]
-                        },
-                        {
-                            id:28,
-                            name:'区域管理',
-                            list:[
-                                {id:8, name:'区域信息', module:'place', functions:['CREATE', 'UPDATE', 'DELETE']},
-                                {id:21, name:'区域类型', module:'place-type', functions:['CREATE', 'UPDATE', 'DELETE']}
-                            ]
-                        },
-                        {
-                            id:102,
-                            name:'商品管理',
-                            list:[
-                                {id:33, name:'公共商品', module:'commodity', functions:['CREATE', 'UPDATE', 'DELETE']},
-                                {id:34, name:'我的商品', module:'commodity-self', functions:['CREATE', 'UPDATE', 'DELETE', 'IMPORT']},
-                                {id:32, name:'商品类型', module:'commodity-type', functions:['CREATE', 'UPDATE', 'DELETE', 'DISABLE']},
-                                {id:35, name:'商品促销', module:'promotion', functions:['CREATE', 'DELETE']}
-                            ]
-                        },
-                        {
-                            id:104,
-                            name:'仓库管理',
-                            list:[
-                                {id:37, name:'仓库信息', module:'repository', functions:['CREATE', 'UPDATE', 'DELETE', 'SETTING']},
-                                {id:38, name:'入库管理', module:'repository-in', functions:['CREATE', 'UPDATE', 'DELETE', 'VERIFY']},
-                                {id:39, name:'出库管理', module:'repository-out', functions:['CREATE', 'UPDATE', 'DELETE', 'VERIFY']},
-                                {id:40, name:'退库管理', module:'repository-return', functions:['CREATE', 'UPDATE', 'DELETE', 'VERIFY']},
-                                {id:48, name:'补货跟踪', module:'trace', functions:['EXPORT']},
-                                {id:49, name:'库存盘点', module:'stock-check', functions:['VERIFY']},
-                                {id:50, name:'商品货机库存', module:'commodity-inventory'},
-                            ]
-                        },
-                        {
-                            id:5,
-                            name:'用户管理',
-                            list:[
-                                {id:17, name:'消费者管理', module:'members', functions:['HISTORY']},
-                                {id:29, name:'商家管理', module:'merchant', functions:['PAY']},
-                                {id:19, name:'用户反馈', module:'feedback', functions:['CREATE', 'UPDATE', 'DELETE']},
-                                {id:46, name:'业务员管理', module:'pioneer', functions:['CREATE', 'UPDATE', 'DELETE', 'EARNINGS']},
-                            ]
-                        },
-                        {
-                            id:103,
-                            name:'规则管理',
-                            list:[
-                                {id:20, name:'优惠券管理', module:'coupon', functions:['CREATE', 'DELETE']},
-                                // {id:22, name:'充值管理', module:'recharge', functions:['CREATE', 'UPDATE', 'DELETE']},
-                                {id:26, name:'规则设置', module:'rule', functions:['UPDATE']},
-                            ]
-                        },
-                        {
-                            id:101,
-                            name:'广告管理',
-                            list:[
-                                {id:27, name:'广告信息', module:'advertising', functions:['CREATE', 'UPDATE', 'RENEWAL', 'CANCEL']},
-                                {id:30, name:'广告商管理', module:'advertiser', functions:['CREATE', 'UPDATE', 'DELETE']},
-                                // {id:36, name:'设备广告', module:'device-ad', functions:['UPDATE']},
-                            ]
-                        },
+                        {id:100, name:'我的日常', module:'my-daily-routine'},
+                        {id:110, name:'专业规则', module:'professional-rules'},
+                        {id:120, name:'课程计划', module:'course-plan'},
+                        {id:130, name:'我的作业', module:'my-homework'},
+                        {id:140, name:'考试报名', module:'exam-registration'},
+                        {id:150, name:'成绩查询', module:'result-inquiry'},
+                        {id:160, name:'我的档案', module:'my-document'},
+                        {id:170, name:'我的缴费', module:'my-payment'}
                     ]
                 },
                 {
-                    id:105,
-                    name:'考务管理',
-                    list:[
-                        {
-                            id:13,
-                            name:'营收数据',
-                            list:[
-                                {id:24, name:'区域收益', module:'place-earnings', functions:['EXPORT']},
-                                {id:25, name:'设备收益', module:'device-earnings', functions:['EXPORT']},
-                                {id:23, name:'商品销量', module:'commodity-earnings', functions:['EXPORT']},
-                                {id:15, name:'广告营收', module:'ad-earnings'}
-                            ]
-                        },
-                        {
-                            id:106,
-                            name:'数据报表',
-                            list:[
-                                {id:42, name:'用户报表', module:'members-report'},
-                                {id:43, name:'消费详情', module:'members-consume', functions:['EXPORT', 'REFUND']},
-                                {id:44, name:'故障报表', module:'trouble-report'},
-                                {id:41, name:'补货详情', module:'replenish', functions:['EXPORT']},
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id:300,
-                    name:'学籍管理',
-                    list:[
-                        {
-                            id:510,
-                            name:'商品管理',
-                            list:[
-                                {id:511, name:'商品列表', module:'mall-goods', functions:['CREATE', 'UPDATE', 'DELETE']},
-                                {id:512, name:'商品订单', module:'mall-goods-order', functions:['EXPORT', 'DISPATCH', 'RECEIVE_GOODS', 'RECEIVE_MONEY']},
-                                {id:513, name:'商品分类', module:'mall-goods-type', functions:['CREATE', 'UPDATE', 'DELETE']},
-                            ]
-                        },
-                        {id:531, name:'广告管理', module:'mall-ad', functions:['CREATE', 'UPDATE', 'DELETE']},
-                        {
-                            id:540,
-                            name:'统计报表',
-                            list:[
-                                {id:541, name:'商品统计', module:'mall-goods-report'},
-                                {id:542, name:'订单统计', module:'mall-order-report'},
-                            ]
-                        },
-                    ]
-                },
-                {
-                    id:400,
+                    id:2,
                     name:'流程中心',
                     list:[
-                        {id:404, name:'流程管理', module:'flow-mgr', functions:['FORM', 'APPROVER']}
+                        {id:200, name:'毕业申请', module:'graduation-application'},
+                        {id:210, name:'我的申请', module:'my-application'}
                     ]
                 },
                 {
-                    id:500,
-                    name:'教务资讯',
+                    id:3,
+                    name:'新闻资讯',
                     list:[
-                        {id:501, name:'滚动图片新闻', module:'news/slider', functions:['DELETE']},
-                        {id:502, name:'公告通知', module:'news/notice', functions:['SLIDER', 'CREATE', 'UPDATE', 'DELETE']},
-                        {id:503, name:'学校新闻', module:'news/school', functions:['SLIDER', 'CREATE', 'UPDATE', 'DELETE']},
-                        {id:504, name:'校园文化活动', module:'news/activity', functions:['SLIDER', 'CREATE', 'UPDATE', 'DELETE']},
-                    ]
-                },
-                {
-                    id:600,
-                    name:'系统管理',
-                    list:[
-                        {id:601, name:'菜单管理', module:'menu', functions:['CREATE', 'UPDATE', 'DELETE']},
-                        {id:602, name:'角色管理', module:'role', functions:['CREATE', 'UPDATE', 'DELETE']},
-                        {id:603, name:'系统日志', module:'log'},
-                        {id:604, name:'教学点管理', module:'teaching-site', functions:['CREATE', 'UPDATE']},
-                        {id:605, name:'系部管理', module:'dept', functions:['CREATE', 'UPDATE']},
-                        {id:606, name:'学期管理', module:'term', functions:['CREATE', 'UPDATE']},
-                        {id:607, name:'教室管理', module:'classroom', functions:['CREATE', 'UPDATE', 'DELETE']},
-                        {id:608, name:'班级管理', module:'class', functions:['CREATE', 'UPDATE']},
-                        {id:609, name:'教师管理', module:'teacher', functions:['CREATE', 'UPDATE', 'DOWNLOAD', 'IMPORT']},
-                        {id:610, name:'学生管理', module:'student', functions:['CREATE', 'UPDATE', 'DOWNLOAD', 'IMPORT']},
+                        {id:300, name:'通知公告', module:'announcement'},
+                        {id:310, name:'新闻资讯', module:'news'}
                     ]
                 },
             ]
