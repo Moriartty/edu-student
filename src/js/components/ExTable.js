@@ -3,7 +3,7 @@ import {Table, Input} from 'antd';
 export default function ExTable(props){
     const {
         columns, scrollX, scrollY,
-        pageNo, pageSize, dataCount, onPageChange, onPageSizeChange
+        pageNo, pageSize, dataCount, onPageChange, onPageSizeChange,tableSize
         } = props;
     //不传dataCount时则不分页
     let paginationOptions=false;
@@ -27,7 +27,7 @@ export default function ExTable(props){
                scroll={{x:scrollX||Math.max(columns.reduce((a, b) => {
                    return {width:(a.width||200)+(b.width||200)}; //默认宽度，防止被挤到一块
                }).width, 1200), y:scrollY}}
-               size="middle"
+               size={tableSize||'middle'}
                {...props}/>
     )
 }
