@@ -89,8 +89,8 @@ MasterPage = connect(state => {
             //首屏加载完时移除
             document.body.removeChild(document.getElementById('initLoading'));
 
-            //加载常用模块
-            dispatch(action.loadEntryMenu());
+            //加载常用模块,暂时没有
+            //dispatch(action.loadEntryMenu());
             //加载日期信息
             dispatch(action.loadDataInfo());
         });
