@@ -51,7 +51,6 @@ class Sidebar extends React.Component {
 
     render(){
         const {sidebarMenuData:menu, onClick} = this.props;
-
         return (
             <Sider className="sidebar" width={260}>
                 <SidebarInfo/>
@@ -61,7 +60,7 @@ class Sidebar extends React.Component {
                         // theme={APP_EDITION=='jianjiao'?'light':'dark'}
                         openKeys={this.state.openKeys}
                         onOpenChange={this.onOpenChange}
-                        selectable={false}
+                        selectable={true}
                         onClick={onClick}
                     >
                         {

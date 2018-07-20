@@ -1,14 +1,26 @@
 export default {
     "announcement":{
-        name:'新闻资讯',
+        name:'通知公告',
         icon:'bars',
         operations:[],
         page:(cb)=>{require.ensure([], require=>{cb(require('pages/Announcement'));});}
     },
-    "news":{
-        name:'通知公告',
+    "news/slider":{
+        name:'滚动新闻',
         icon:'bars',
         operations:[],
-        page:(cb)=>{require.ensure([], require=>{cb(require('pages/News'));});}
+        page:(cb)=>{require.ensure([], require=>{cb(require('pages/NewsSlider'));});}
+    },
+    "news/school":{
+        name:'学校新闻',
+        icon:'bars',
+        operations:[],
+        page:(cb)=>{require.ensure([], require=>{cb(require('pages/NewsSchool'));});}
+    },
+    "news/Activity":{
+        name:'学校文化活动',
+        icon:'bars',
+        operations:[],
+        page:(cb)=>{require.ensure([], require=>{cb(require('pages/NewsActivity'));});}
     }
 }

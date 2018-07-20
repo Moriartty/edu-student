@@ -1,7 +1,7 @@
 const path=require('path');
 
 module.exports = {
-    // 'icon-url':JSON.stringify(path.resolve(__dirname, 'src/vendor/fonts/anticon')),
+     //'icon-url':JSON.stringify(path.resolve(__dirname, 'src/vendor/fonts/anticon')),
     'theme':'theme',
     // 'primary-color':'#108ec9',
     'layout-header-background':'white',

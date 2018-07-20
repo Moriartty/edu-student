@@ -1,5 +1,35 @@
 module.exports = [
     {
+        desc:'获取新闻列表(学生)',
+        type:'GET',
+        url:'/news/getNewsByPage',
+        params:{
+            categoryId:'分类ID，1为公告通知，2为学校新闻，3为校园文化活动',
+            title:'标题，模糊查询',
+            pageNo:'页码',
+            'pageSize':'每页显示的条数（不传默认10条）'
+        },
+        result:{
+            'code':'0',
+            'data':{
+                'pageNo':1,
+                'pageSize':10,
+                'result|10':[
+                    {
+                        id:'@increment',
+                        title:'@ctitle(10,30)', //标题
+                        highlight:'@pick(0,1)', //是否高亮
+                        author:'@cname', //作者
+                        updateTime:'@datetime', //最后更新时间
+                        createTime:'@datetime', //创建时间
+                    }
+                ],
+                'totalCount':30,
+                'totalPages':3
+            }
+        }
+    },
+    {
         desc:'获取新闻列表',
         type:'GET',
         url:'/news',

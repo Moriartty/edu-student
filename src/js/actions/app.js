@@ -12,7 +12,6 @@ let action={};
 action.loadTabPage = module => (dispatch, getState) => {
     const state=getState().app;
     const menu=state.menuObj[module];
-    console.log('menu',state.menuObj);
     const panes=state.panes;
     const index=panes.findIndex(o => o.key==module);
     if(~index){
@@ -158,7 +157,6 @@ action.loadUserMenu = (reloadOnly) => dispatch => ajax.get('/menu/user').then(da
         data,
         obj
     });
-    console.log('data',data);
 
     if(!reloadOnly) {
         //默认打开首页

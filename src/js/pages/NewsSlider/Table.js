@@ -3,6 +3,7 @@
  */
 import {connect} from 'react-redux';
 import ExTable from 'components/ExTable';
+import action from 'actions/news';
 import {Icon} from 'antd';
 
 
@@ -26,21 +27,29 @@ class Table extends React.Component{
         ]
     }
     render(){
-        const {loading, list} = this.props;
-        console.log('list',list);
+        const {loading, list, page, onChange} = this.props;
         return (
             <ExTable loading={loading}
                      columns={this.columns}
                      dataSource={list}
                      tableSize='small'
+                     pageNo={page.pageNo}
+                     pageSize={page.pageSize}
+                     dataCount={page.dataCount}
+                     onChange={onChange}
             />
         )
     }
 }
 
 Table = connect(state => {
-    const {loading, list} = state['news'];
-    return {loading, list};
-}, null)(Table);
+    const {loading, list, page} = state['news'];
+    return {loading, list, page};
+}, dispatch => ({
+    onChange(pagination, filters, sorter){
+        //console.log('pagination',pagination);
+        dispatch(action.loadList(pagination.current, pagination.pageSize, filters));
+    },
+}))(Table);
 
 export default Table;

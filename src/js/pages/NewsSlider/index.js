@@ -3,25 +3,29 @@ import action from 'actions/news';
 import Toolbar from './Toolbar';
 import Table from './Table';
 
-class News extends React.Component{
+class NewsSlider extends React.Component{
     componentWillMount(){
         this.props.init();
     }
     render(){
         return (
             <div>
-                <Toolbar onRefresh={this.props.init}/>
+                <Toolbar onSearch={this.props.onSearch}/>
                 <Table/>
             </div>
         )
     }
 }
 
-News = connect(null,dispatch=>({
+NewsSlider = connect(null,dispatch=>({
     init(){
         //加载数据
         dispatch(action.loadList())
+    },
+    onSearch(params){
+        dispatch({type:'NEWS_SEARCH_PARAMS_CHANGED',params});
+        dispatch(action.loadList());
     }
-}))(News);
+}))(NewsSlider);
 
-module.exports = News;
+module.exports = NewsSlider;

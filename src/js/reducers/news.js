@@ -5,7 +5,12 @@ import {objectAppend} from 'utils';
 
 const defaultState = {
     loading:false,
-    list:[]
+    list:[],
+    page:{
+        pageNo:1,
+        pageSize:10
+    },
+    searchParams:{}
 };
 
 export default (state,action) => {
@@ -18,8 +23,18 @@ export default (state,action) => {
         //装载数据
         case 'NEWS_LOAD':
             newState.list = action.list;
+            newState.page = {
+                pageNo:action.pageNo,
+                pageSize:action.pageSize,
+                dataCount:action.totalCount
+            };
+            break;
+        //搜索参数改变
+        case 'NEWS_SEARCH_PARAMS_CHANGED':
+            newState.searchParams = action.params;
             break;
         default: return state||defaultState;
     }
+    console.log('newState',objectAppend(newState,state));
     return objectAppend(newState,state);
 }
