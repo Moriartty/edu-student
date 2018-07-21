@@ -33,7 +33,7 @@ module.exports = [
                     id:3,
                     name:'新闻资讯',
                     list:[
-                        {id:300, name:'通知公告', module:'announcement'},
+                        {id:300, name:'通知公告', module:'news/notice'},
                         {id:31, name:'新闻资讯',list:[
                             {id:310, name:'滚动图片新闻', module:'news/slider'},
                             {id:311, name:'学校新闻', module:'news/school'},

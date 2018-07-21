@@ -12,6 +12,8 @@ let action={};
 action.loadTabPage = module => (dispatch, getState) => {
     const state=getState().app;
     const menu=state.menuObj[module];
+    console.log('menu',state.menuObj);
+    // console.log(menu,module);
     const panes=state.panes;
     const index=panes.findIndex(o => o.key==module);
     if(~index){

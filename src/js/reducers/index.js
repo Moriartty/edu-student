@@ -15,7 +15,7 @@ import news from './news';
 export default combineReducers({
     app,
     home,
-    news
+    ...news
     // feedback,
     // ...teaching,
     // ...flow,

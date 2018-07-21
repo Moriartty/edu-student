@@ -1,30 +1,28 @@
-/**
- * Created by user on 18-7-19.
- */
 import ajax from 'utils/ajax';
 let action = {};
 
 /**
- * 加载数据
+ * 加载列表
  * */
-action.loadList = (pageNo,pageSize) => (dispatch,getState) => {
-    dispatch({type:'NEWS_LOADING',loading:true});
-    const state = getState()['news'];
+action.loadList = (pageNo, pageSize) => (dispatch,getState) => {
+    dispatch({type:'NEWS_NOTICE_LOADING',loading:true});
+    const state = getState()['news/notice'];
     const page = state.page;
-    const params = state.searchParams;
-    return ajax.get('/slider-news-student',{
+    const params = state.searchParam;
+    return ajax.get('/news',{
         pageNo:pageNo||page.pageNo,
         pageSize:pageSize||page.pageSize,
+        categoryId:1,
         title:params.title
     }).then(data=>{
         dispatch({
-            type:'NEWS_LOAD',
+            type:'NEWS_NOTICE_LOAD',
             pageNo:data.pageNo,
             pageSize:data.pageSize,
             totalCount:data.totalCount,
             list:data.result
         });
-        dispatch({type:'NEWS_LOADING'});
+        dispatch({type:'NEWS_NOTICE_LOADING'})
     })
 };
 

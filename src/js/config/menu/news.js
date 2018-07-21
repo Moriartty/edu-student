@@ -1,9 +1,9 @@
 export default {
-    "announcement":{
+    "news/notice":{
         name:'通知公告',
         icon:'bars',
         operations:[],
-        page:(cb)=>{require.ensure([], require=>{cb(require('pages/Announcement'));});}
+        page:(cb)=>{require.ensure([], require=>{cb(require('pages/NewsNotice'));});}
     },
     "news/slider":{
         name:'滚动新闻',
@@ -17,7 +17,7 @@ export default {
         operations:[],
         page:(cb)=>{require.ensure([], require=>{cb(require('pages/NewsSchool'));});}
     },
-    "news/Activity":{
+    "news/activity":{
         name:'学校文化活动',
         icon:'bars',
         operations:[],

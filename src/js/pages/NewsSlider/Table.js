@@ -3,7 +3,7 @@
  */
 import {connect} from 'react-redux';
 import ExTable from 'components/ExTable';
-import action from 'actions/news';
+import action from 'actions/news/slider';
 import {Icon} from 'antd';
 
 
@@ -43,7 +43,7 @@ class Table extends React.Component{
 }
 
 Table = connect(state => {
-    const {loading, list, page} = state['news'];
+    const {loading, list, page} = state['news/slider'];
     return {loading, list, page};
 }, dispatch => ({
     onChange(pagination, filters, sorter){

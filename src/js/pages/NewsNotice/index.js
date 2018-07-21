@@ -1,10 +1,9 @@
 import {connect} from 'react-redux';
-import action from 'actions/news/slider';
+import action from 'actions/news/notice';
 import Toolbar from './Toolbar';
 import Table from './Table';
-
-class NewsSlider extends React.Component{
-    componentWillMount(){
+class NewsNotice extends React.Component{
+    componentWillMount() {
         this.props.init();
     }
     render(){
@@ -16,16 +15,16 @@ class NewsSlider extends React.Component{
         )
     }
 }
-
-NewsSlider = connect(null,dispatch=>({
+NewsNotice = connect(null,dispatch => ({
     init(){
-        //加载数据
-        dispatch(action.loadList())
+        //加载列表数据
+        dispatch(action.loadList());
     },
+    //关键字搜索
     onSearch(params){
-        dispatch({type:'NEWS_SLIDER_SEARCH_PARAMS_CHANGED',params});
+        dispatch({type:'NEWS_NOTICE_SEARCH_PARAMS_CHANGED',params});
         dispatch(action.loadList());
     }
-}))(NewsSlider);
+}))(NewsNotice);
 
-module.exports = NewsSlider;
+module.exports = NewsNotice;
