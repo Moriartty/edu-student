@@ -1,6 +1,8 @@
 import {Button, Layout} from 'antd';
 const {Content} = Layout;
-import img from 'img/err404.png';
+// import img from 'img/err404.png';
+import img from 'img/crack.jpg';
+
 
 class Err404 extends React.Component {
     render() {

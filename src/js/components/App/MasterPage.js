@@ -83,14 +83,14 @@ MasterPage = connect(state => {
     onWillMount(){
         const userInfoPromise=dispatch(action.loadUserInfo());
         const menuPromise=dispatch(action.loadUserMenu());
-        Promise.all([userInfoPromise, menuPromise]).then(results => {
+        Promise.all([userInfoPromise,menuPromise]).then(results => {
             //所有首屏需要加载的数据已经加载完成，效果比起componentDidMount更合理
 
             //首屏加载完时移除
             document.body.removeChild(document.getElementById('initLoading'));
 
             //加载常用模块,暂时没有
-            //dispatch(action.loadEntryMenu());
+            dispatch(action.loadEntryMenu());
             //加载日期信息
             dispatch(action.loadDataInfo());
         });

@@ -43,7 +43,7 @@ NewsListCard = connect(state => {
         dispatch(action.loadNewsList(category));
     },
     onMoreClick(module){
-        dispatch(appAction.loadTabPage('news/'+module));
+        dispatch(appAction.loadLinkPage('news/'+module));
     }
 }))(NewsListCard);
 

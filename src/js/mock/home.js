@@ -44,7 +44,7 @@ module.exports = [
         result:{
             'code':'0',
             'data':[
-                'log', 'feedback', 'role', 'menu',
+                'course-plan',
                 // 'inventory', 'members', 'promotion', 'trouble',
                 // 'advertiser', 'rule', 'd-earnings', 'replenish', 'repository', 'repository-in', 'repository-out',
                 // 'repository-return', 'device-map', 'device-log', 'device-ad', 'device-earnings', 'place', 'place-type',
@@ -54,4 +54,37 @@ module.exports = [
             ]
         }
     },
+    // {
+    //     desc:'获取入口模块列表',
+    //     type:'GET',
+    //     url:'/home/entry',
+    //     params:{},
+    //     result:{
+    //         'code':'0',
+    //         'data':[
+    //             {
+    //                 no:'school-daily',
+    //                 name:'校园日常',
+    //                 list:[
+    //                     {id:100, name:'我的日常', module:'my-daily-routine'},
+    //                     {id:110, name:'专业规则', module:'professional-rules'},
+    //                     {id:120, name:'课程计划', module:'course-plan'},
+    //                     {id:130, name:'我的作业', module:'my-homework'},
+    //                     {id:140, name:'考试报名', module:'exam-registration'},
+    //                     {id:150, name:'成绩查询', module:'result-inquiry'},
+    //                     {id:160, name:'我的档案', module:'my-document'},
+    //                     {id:170, name:'我的缴费', module:'my-payment'}
+    //                 ]
+    //             },
+    //             {
+    //                 no:'flows',
+    //                 name:'流程中心',
+    //                 list:[
+    //                     {id:200, name:'毕业申请', module:'graduation-application'},
+    //                     {id:210, name:'我的申请', module:'my-application'}
+    //                 ]
+    //             }
+    //         ]
+    //     }
+    // },
 ];

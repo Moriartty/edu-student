@@ -25,7 +25,7 @@ module.exports = [
                 address:'@province@city@county@cword(2, 4)路@integer(1,30)号', //住址
                 lastLogin:'@datetime',
                 createTime:'@datetime',
-                avatar: "https://toffy-chiu.github.io/img/avatar/5.jpg",
+                avatar: "https://avatars0.githubusercontent.com/u/15435074?s=460&v=4",
             }
         }
     },

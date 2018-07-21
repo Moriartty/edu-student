@@ -2,7 +2,6 @@ import ajax from 'utils/ajax';
 import menuConfig from 'config/menu';
 import NProgress from 'nprogress';
 const Err403=(cb)=>{require.ensure([], require=>{cb(require('pages/Error/403'));});};
-
 let action={};
 
 /**
@@ -12,8 +11,6 @@ let action={};
 action.loadTabPage = module => (dispatch, getState) => {
     const state=getState().app;
     const menu=state.menuObj[module];
-    console.log('menu',state.menuObj);
-    // console.log(menu,module);
     const panes=state.panes;
     const index=panes.findIndex(o => o.key==module);
     if(~index){
@@ -50,18 +47,43 @@ action.loadTabPage = module => (dispatch, getState) => {
 };
 
 /**
+ * 点非菜单链接加载页面,如News
+ * */
+action.loadLinkPage = module => (dispatch,getState) => {
+    const state = getState().app;
+    const panes = state.panes;
+    console.log(state.menuObj);
+    const index=panes.findIndex(o => o.key==module);
+    if(~index){
+        //已经存在，直接激活
+        dispatch({type:'APP_TAB_SWITCH', key:module});
+    }else{
+        const menu = menuConfig[module];
+        menu.page(component => {
+            NProgress.done();
+            dispatch({type:'APP_TAB_CHANGE', panes:panes.concat([{
+                    title: menu.name,
+                    key: module,
+                    icon:menu.icon,
+                    component: React.createElement(component)
+                }]), key:module});
+        });
+    }
+}
+
+/**
  * 加载常用入口列表
  * @returns {Function}
  */
 action.loadEntryMenu = () => (dispatch, getState) => ajax.get('/home/entry').then(list => {
     const menuObj=getState().app.menuObj;
     dispatch({type: 'APP_ENTRY_MENU_LOAD', data: [
-        {
-            no:'entry',
-            name:'常用模块',
-            list:list.map(module => menuObj[module])
-        }
-    ]});
+            {
+                no:'entry',
+                name:'常用模块',
+                list:list.map(module => menuObj[module])
+            }
+        ]});
 });
 
 /**
@@ -159,7 +181,7 @@ action.loadUserMenu = (reloadOnly) => dispatch => ajax.get('/menu/user').then(da
         data,
         obj
     });
-
+    console.log('test',obj);
     if(!reloadOnly) {
         //默认打开首页
         dispatch(action.loadTabPage('home'));
