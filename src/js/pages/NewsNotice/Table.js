@@ -18,7 +18,7 @@ class Table extends React.Component{
         const {loading, list, page, onChange} = this.props;
         return (
             <div>
-                <ExTable tableSize='small'
+                <ExTable
                          pageNo={page.pageNo}
                          pageSize={page.pageSize}
                          dataCount={page.dataCount}

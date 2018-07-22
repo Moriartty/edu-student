@@ -20,7 +20,7 @@ export default (state,action) => {
             newState.page = {
                 pageNo:action.pageNo,
                 pageSize:action.pageSize,
-                totalCount:action.totalCount
+                dataCount:action.totalCount
             };
             break;
         default:return state||defaultState;

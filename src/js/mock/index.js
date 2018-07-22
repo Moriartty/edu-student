@@ -16,6 +16,7 @@ mockList=mockList.concat(require('./profile'));
 mockList=mockList.concat(require('./common'));
 mockList=mockList.concat(require('./login'));
 mockList=mockList.concat(require('./feedback'));
+mockList=mockList.concat(require('./school-daily'));
 
 let mockData={};
 

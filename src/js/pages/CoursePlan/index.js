@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import Table from './Table'
+import action from 'actions/school-daily/course-plan';
 
 class CoursePlan extends React.Component{
     componentWillMount() {

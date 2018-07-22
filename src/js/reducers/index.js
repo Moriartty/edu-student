@@ -5,6 +5,7 @@ import {combineReducers} from 'redux';
 import app from './app';
 import home from './home';
 import news from './news';
+import schoolDaily from './school-daily';
 // import feedback from './feedback';
 //
 // import teaching from './teaching';
@@ -15,7 +16,8 @@ import news from './news';
 export default combineReducers({
     app,
     home,
-    ...news
+    ...news,
+    ...schoolDaily,
     // feedback,
     // ...teaching,
     // ...flow,

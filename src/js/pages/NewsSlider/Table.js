@@ -32,7 +32,6 @@ class Table extends React.Component{
             <ExTable loading={loading}
                      columns={this.columns}
                      dataSource={list}
-                     tableSize='small'
                      pageNo={page.pageNo}
                      pageSize={page.pageSize}
                      dataCount={page.dataCount}

@@ -24,9 +24,10 @@ export default function ExTable(props){
     return (
         <Table rowKey="id"
                pagination={paginationOptions}
-               scroll={{x:scrollX||Math.max(columns.reduce((a, b) => {
-                   return {width:(a.width||200)+(b.width||200)}; //默认宽度，防止被挤到一块
-               }).width, 1200), y:scrollY}}
+               //个人觉得这样处理不太好，产生横向滚动条体验较差
+               // scroll={{x:scrollX||Math.max(columns.reduce((a, b) => {
+               //     return {width:(a.width||200)+(b.width||200)}; //默认宽度，防止被挤到一块
+               // }).width, 1200), y:scrollY}}
                size={tableSize||'middle'}
                {...props}/>
     )
