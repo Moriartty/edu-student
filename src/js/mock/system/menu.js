@@ -13,7 +13,7 @@ module.exports = [
                     list:[
                         {id:100, name:'我的日常', module:'my-daily-routine'},
                         {id:110, name:'专业规则', module:'professional-rules'},
-                        {id:120, name:'课程计划', module:'course-plan'},
+                        {id:120, name:'课程计划', module:'school-daily/course-plan'},
                         {id:130, name:'我的作业', module:'my-homework'},
                         {id:140, name:'考试报名', module:'exam-registration'},
                         {id:150, name:'成绩查询', module:'result-inquiry'},

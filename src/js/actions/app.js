@@ -52,7 +52,6 @@ action.loadTabPage = module => (dispatch, getState) => {
 action.loadLinkPage = module => (dispatch,getState) => {
     const state = getState().app;
     const panes = state.panes;
-    console.log(state.menuObj);
     const index=panes.findIndex(o => o.key==module);
     if(~index){
         //已经存在，直接激活
@@ -181,7 +180,6 @@ action.loadUserMenu = (reloadOnly) => dispatch => ajax.get('/menu/user').then(da
         data,
         obj
     });
-    console.log('test',obj);
     if(!reloadOnly) {
         //默认打开首页
         dispatch(action.loadTabPage('home'));

@@ -16,10 +16,6 @@ class Table extends React.Component{
     }
     render(){
         const {loading, list, page, onChange,onClick} = this.props;
-        const ids = list.map((o,i)=>{
-            return o.id;
-        });
-        console.log('props',this.props);
         return (
             <div>
                 <ExTable
@@ -30,9 +26,8 @@ class Table extends React.Component{
                     columns={this.columns}
                     onChange={onChange}
                     dataSource={list}
-                    onRow={(recode,index)=>{
-                        console.log(recode);
-                        return {onClick}
+                    onRow={(recode)=>{
+                        return {onClick:()=>{onClick(recode)}}
                     }}
                 />
             </div>
@@ -44,9 +39,8 @@ Table = connect(state => {
     const {loading,list,page} = state['school-daily/course-plan'];
     return {loading,list,page};
 },dispatch => ({
-    onClick(recode,index){
-        console.log('recode',recode);
-        console.log('index',index);
+    onClick(recode){
+        dispatch(action.loadCourseDetail(recode.id));
     },
     onChange(pagination, filters, sorter){
         dispatch(action.loadList(pagination.current, pagination.pageSize, filters));

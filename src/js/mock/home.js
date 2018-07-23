@@ -44,7 +44,7 @@ module.exports = [
         result:{
             'code':'0',
             'data':[
-                'course-plan',
+                'school-daily/course-plan',
                 // 'inventory', 'members', 'promotion', 'trouble',
                 // 'advertiser', 'rule', 'd-earnings', 'replenish', 'repository', 'repository-in', 'repository-out',
                 // 'repository-return', 'device-map', 'device-log', 'device-ad', 'device-earnings', 'place', 'place-type',
