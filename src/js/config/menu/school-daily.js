@@ -1,10 +1,10 @@
 export default {
-    // "my-daily-routine":{
-    //     name:'我的日常',
-    //     icon:'bars',
-    //     operations:[],
-    //     page:(cb)=>{require.ensure([], require=>{cb(require('pages/MyDailyRoutine'));});}
-    // },
+    "school-daily/my-daily":{
+        name:'我的日常',
+        icon:'bars',
+        operations:[],
+        page:(cb)=>{require.ensure([], require=>{cb(require('pages/MyDaily'));});}
+    },
     // "professional-rules":{
     //     name:'专业规则',
     //     icon:'bars',
