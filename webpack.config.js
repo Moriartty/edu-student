@@ -6,7 +6,9 @@ const HappyPack = require('happypack');
 const path=require('path');
 const theme=require('./theme');
 
-const APP_NAME='深圳广播电视大学教务管理系统';
+//const APP_NAME='深圳广播电视大学教务管理系统';
+const APP_NAME='SIMPLEX';
+
 
 // 生产环境
 var isProd = process.env.NODE_ENV === 'production';

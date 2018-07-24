@@ -40,15 +40,17 @@ module.exports = [
         },
         result:{
             'code':'0',
-            'data|5-10':[
+            'data|10':[
                 {
                     id:'@increment',
                     grade:'@ctitle(4,6)',//年级
                     semester:'@ctitle(5)',//学期
                     subject:'@ctitle(5,17)',//专业
                     level:'@ctitle(5,6)',//层次
-                    courseName:'@ctitle(3,5)',//课程
-                    courseNo:'@increment',//课程编号
+                    course:{
+                        name:'@ctitle(3,5)',//课程
+                        no:'@increment',//课程编号
+                    },
                     courseNature:'@ctitle(2)',//课程性质
                     credit:'@increment',//学分
                     period:'@increment',//学时
@@ -58,7 +60,7 @@ module.exports = [
                         name:'@cname',
                         phone:'13888888888',
                     },//任课教师
-                    peopleNum:'@increment'
+                    peopleNum:'@increment'//人数
                 }
             ]
         }

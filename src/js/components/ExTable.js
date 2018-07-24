@@ -24,9 +24,9 @@ export default function ExTable(props){
     return (
         <Table rowKey="id"
                pagination={paginationOptions}
-               //个人觉得这样处理不太好，产生横向滚动条体验较差
+               //设置了scrollY可以使表头固定，但会使表头与表格内容不对齐，奇怪！
                // scroll={{x:scrollX||Math.max(columns.reduce((a, b) => {
-               //     return {width:(a.width||200)+(b.width||200)}; //默认宽度，防止被挤到一块
+               //     return {width:(a.width||100)+(b.width||100)}; //默认宽度，防止被挤到一块
                // }).width, 1200), y:scrollY}}
                size={tableSize||'middle'}
                {...props}/>
