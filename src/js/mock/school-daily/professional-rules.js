@@ -1,0 +1,22 @@
+module.exports = [
+    {
+        desc:'获取课程计划',
+        type:'GET',
+        url:'/professionalRules',
+        params:{
+            pageNo:'页码',
+            'pageSize':'每页显示的条数（不传默认10条）'
+        },
+        result:{
+            'code':'0',
+            'data':{
+                'ruleName':'深圳广播电视大学2017年秋季计算机科学与技术（本科）实施性专业规则',
+                'grade':1,//年级
+                'professionalName':'@ctitle',//专业名称
+                'ruleNo':'@increment',//规则号
+                'graduationCredits':'@increment',//毕业学分
+                'centralCredits':'@increment',//中央电大考试学分
+            }
+        }
+    },
+]
