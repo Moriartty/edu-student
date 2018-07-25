@@ -5,12 +5,12 @@ export default {
         operations:[],
         page:(cb)=>{require.ensure([], require=>{cb(require('pages/MyDaily'));});}
     },
-    // "professional-rules":{
-    //     name:'专业规则',
-    //     icon:'bars',
-    //     operations:[],
-    //     page:(cb)=>{require.ensure([], require=>{cb(require('pages/ProfessionalRules'));});}
-    // },
+     "school-daily/professional-rules":{
+         name:'专业规则',
+         icon:'bars',
+         operations:[],
+         page:(cb)=>{require.ensure([], require=>{cb(require('pages/ProfessionalRules'));});}
+     },
     "school-daily/course-plan":{
         name:'课程计划',
         icon:'bars',

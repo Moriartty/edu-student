@@ -43,9 +43,12 @@ module.exports = [
             'data|10':[
                 {
                     id:'@increment',
-                    grade:'@ctitle(4,6)',//年级
-                    semester:'@ctitle(5)',//学期
-                    subject:'@ctitle(5,17)',//专业
+                    grade:'@ctitle(2)',//年级
+                    semester:'1',//学期
+                    subject:{
+                        name:'@ctitle(6,10)',
+                        no:'@increment'//专业规则号
+                    },//专业
                     level:'@ctitle(5,6)',//层次
                     course:{
                         name:'@ctitle(3,5)',//课程
