@@ -22,7 +22,7 @@ export default {
         icon:'bars',
         operations:[],
         page:(cb)=>{require.ensure([],require=>{cb(require('pages/CoursePlan/CourseTable'));});}
-    }
+    },
     // "my-homework":{
     //     name:'我的作业',
     //     icon:'bars',
@@ -41,12 +41,12 @@ export default {
     //     operations:[],
     //     page:(cb)=>{require.ensure([], require=>{cb(require('pages/ResultInquiry'));});}
     // },
-    // "my-document":{
-    //     name:'我的档案',
-    //     icon:'bars',
-    //     operations:[],
-    //     page:(cb)=>{require.ensure([], require=>{cb(require('pages/MyDocument'));});}
-    // },
+     "school-daily/my-document":{
+         name:'我的档案',
+         icon:'bars',
+         operations:[],
+         page:(cb)=>{require.ensure([], require=>{cb(require('pages/MyDocument'));});}
+     },
     // "my-payment":{
     //     name:'我的缴费',
     //     icon:'bars',

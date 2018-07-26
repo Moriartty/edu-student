@@ -4,6 +4,7 @@
 import {connect} from 'react-redux';
 import TableHeader from './TableHeader';
 import ModuleTable from './ModuleTable';
+import RepairModules from './RepairModules';
 import action from 'actions/school-daily/professional-rules';
 class ProfessionalRules extends React.Component{
     constructor(props){
@@ -18,6 +19,7 @@ class ProfessionalRules extends React.Component{
             <div>
                 <TableHeader/>
                 <ModuleTable/>
+                <RepairModules/>
             </div>
         );
     }
@@ -26,6 +28,7 @@ class ProfessionalRules extends React.Component{
 ProfessionalRules = connect(null,dispatch=>({
     init(){
         dispatch(action.loadData());
+        dispatch(action.loadRepairCourses());
     }
 }))(ProfessionalRules);
 

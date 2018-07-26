@@ -1,22 +1,72 @@
 module.exports = [
     {
-        desc:'获取课程计划',
+        desc:'获取专业规则',
         type:'GET',
         url:'/professionalRules',
+        params:{
+        },
+        result:{
+            'code':'0',
+            'data':{
+                'headerData':{
+                    'ruleName':'深圳广播电视大学2017年秋季计算机科学与技术（本科）实施性专业规则',
+                    'grade':1,//年级
+                    'professionalName':'@ctitle',//专业名称
+                    'ruleNo':'@increment',//规则号
+                    'graduationCredits':'@increment',//毕业学分
+                    'centralCredits':'@increment',//中央电大考试学分
+                },
+                'modules|5':[
+                    {
+                        'moduleName':'@ctitle',//模块名
+                        'minGradCredits':'@increment',//模块最低毕业学分
+                        'minCentCredits':'@increment',//中央电大最低考试学分
+                        'courses|3':[
+                            {
+                                'courseNo':'@increment',//课程序号
+                                'courseId':'@increment(8)',//课程Id
+                                'courseName':'@ctitle(5,7)',//课程名称
+                                'courseCredits':'@increment',//课程学分
+                                'courseType':'@ctitle(2,3)',//课程类型
+                                'courseNature':'必修',//课程性质
+                                'openSemester':'1',//开设学期
+                                'examUnit':'@ctitle(2)',//考试单位
+                                'courseCategory':'A',//课程分类
+                                'score':'@increment',//考试成绩
+                                'isRegister':'是',//是否已注册
+                                'hasCredits':'已获得',//是否获得学分
+
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
+        desc:'获取补修课程',
+        type:'GET',
+        url:'/professionalRules/repairCourses',
         params:{
             pageNo:'页码',
             'pageSize':'每页显示的条数（不传默认10条）'
         },
         result:{
             'code':'0',
-            'data':{
-                'ruleName':'深圳广播电视大学2017年秋季计算机科学与技术（本科）实施性专业规则',
-                'grade':1,//年级
-                'professionalName':'@ctitle',//专业名称
-                'ruleNo':'@increment',//规则号
-                'graduationCredits':'@increment',//毕业学分
-                'centralCredits':'@increment',//中央电大考试学分
-            }
+            'data|1-5':[
+                {
+                    'id':'@increment',//序号
+                    'moduleName':'@ctitle(5)',//模块名
+                    'courseName':'@ctitle(5)',//课程名称
+                    'credits':'@increment',//学分
+                    'openSemester':'1',//开设学期
+                    'examUnit':'@ctitle(3)',//考试单位
+                    'tips':'@ctitle(10)',//备注
+                    'score':'@increment',//考试成绩
+                    'isRegister':'是',//是否已注册
+                    'hasCredits':'未获得',//是否获得学分
+                }
+            ]
         }
     },
 ]
