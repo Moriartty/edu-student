@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import action from 'actions/school-daily/my-daily'
 import moment from 'moment';
 import EventDetail from './EventsDetail';
+import goTop from 'tf-utils/dom/goTop';
 import 'less/my-daily.less';
+
 class MyDaily extends React.Component{
     constructor(props){
         super(props);
@@ -26,7 +28,7 @@ class MyDaily extends React.Component{
                 <ul className="events">
                     {
                         listData.map(item => (
-                            <li key={item.content}>
+                            <li key={item.autoId}>
                                 <Badge status={item.type} text={item.content} />
                             </li>
                         ))
@@ -38,12 +40,13 @@ class MyDaily extends React.Component{
     dateSelected(value){
         this.setState({
             selectedDate:value.date()
-        })
+        });
+        goTop(document.querySelector('.ant-tabs-tabpane-active.page-pane'))
     }
     render(){
-        const {onPanelChange,onSelect,loading} = this.props;
+        const {onPanelChange,onSelect,loading,list} = this.props;
         const {selectedDate} = this.state;
-        const selectedValue = this.props.list.length>0?this.props.list[selectedDate-1]:[];
+        const selectedValue = list&&list.length>0?list[selectedDate-1]:[];
         return (
             <div>
                 <Spin spinning={loading}>
