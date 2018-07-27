@@ -10,7 +10,6 @@ let actions = {};
 actions.loadData = () => (dispatch) => {
     dispatch({type:'MY_DOCUMENT_LOADING',loading:true});
     return ajax.get('/myDocument').then(data=>{
-        console.log(data);
         dispatch({type:'MY_DOCUMENT_LOAD',data:data});
         dispatch({type:'MY_DOCUMENT_LOADING',loading:false});
     })

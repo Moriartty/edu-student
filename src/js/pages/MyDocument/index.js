@@ -7,8 +7,6 @@ import EditableTable from './EditableTable';
 import action from 'actions/school-daily/my-document';
 import {Spin} from 'antd';
 
-// "react": "15.6.2",
-//     "react-dom": "15.6.2",
 
 class MyDocument extends React.Component{
     componentWillMount(){

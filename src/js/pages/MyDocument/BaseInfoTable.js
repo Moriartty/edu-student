@@ -11,12 +11,12 @@ class BaseInfoTable extends React.Component{
         return (
             <div>
                 <Row className="document-header" gutter={0}>
-                    <Col span={6} className="avatar-container">
+                    <Col span={4} className="avatar-container">
                         <a className="hd" title="修改头像">
                             <Avatar src={defaultAvatar}/>
                         </a>
                     </Col>
-                    <Col span={18}>
+                    <Col span={20}>
                         <Row gutter={0}>
                             <Col className="document-header-item-title" span={titleSpan}>姓名</Col>
                             <Col className="document-header-item-content" span={contentSpan}>{data.name}</Col>
@@ -60,7 +60,7 @@ class BaseInfoTable extends React.Component{
                             <Col className="document-header-item-content" span={contentSpan}>{data.employer}</Col>
                         </Row>
                         <Row gutter={0}>
-                            <Col className="document-header-item-title" span={titleSpan}>工作单位联系电话</Col>
+                            <Col className="document-header-item-title" span={titleSpan}>单位电话</Col>
                             <Col className="document-header-item-content" span={contentSpan}>{data.employerPhone}</Col>
                             <Col className="document-header-item-title" span={titleSpan}>电话</Col>
                             <Col className="document-header-item-content" span={contentSpan}>{data.phoneNum}</Col>

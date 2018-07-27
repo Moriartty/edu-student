@@ -1,24 +1,7 @@
-import { Table, Input, InputNumber, Popconfirm, Form } from 'antd';
+import { Table, Input, InputNumber, Popconfirm, Form,Button } from 'antd';
 import {connect} from 'react-redux';
 import 'less/my-document.less';
 
-// class EditableTable extends React.Component{
-//     render(){
-//         return (
-//             <div></div>
-//         )
-//     }
-// }
-
-const data = [];
-for (let i = 0; i < 100; i++) {
-    data.push({
-        key: i.toString(),
-        name: `Edrward ${i}`,
-        age: 32,
-        address: `London Park no. ${i}`,
-    });
-}
 const FormItem = Form.Item;
 const EditableContext = React.createContext();
 
@@ -76,17 +59,17 @@ class EditableCell extends React.Component {
 class EditableTable extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { data, editingKey: '' };
+        this.state = {  editingKey: '' };
         this.columns = [
             {
                 title: '自何年何月起至何年何月止',
-                dataIndex: 'name',
+                dataIndex: 'when',
                 width: '42%',
                 editable: true,
             },
             {
                 title: '在何地、何校学习',
-                dataIndex: 'age',
+                dataIndex: 'where',
                 width: '42%',
                 editable: true,
             },
@@ -111,7 +94,7 @@ class EditableTable extends React.Component {
                     )}
                   </EditableContext.Consumer>
                   <Popconfirm
-                      title="Sure to cancel?"
+                      title="确定取消?"
                       onConfirm={() => this.cancel(record.key)}
                   >
                     <a>Cancel</a>
@@ -161,6 +144,7 @@ class EditableTable extends React.Component {
     };
 
     render() {
+        const {eduExperience} =this.props;
         const components = {
             body: {
                 row: EditableFormRow,
@@ -176,7 +160,7 @@ class EditableTable extends React.Component {
                 ...col,
                 onCell: record => ({
                     record,
-                    inputType: col.dataIndex === 'age' ? 'number' : 'text',
+                    inputType:'text',
                     dataIndex: col.dataIndex,
                     title: col.title,
                     editing: this.isEditing(record),
@@ -188,9 +172,16 @@ class EditableTable extends React.Component {
             <Table
                 components={components}
                 bordered
-                dataSource={this.state.data}
+                dataSource={eduExperience}
                 columns={columns}
                 rowClassName="editable-row"
+                pagination={false}
+                title={()=>{return (
+                    <div>
+                        主要学习经历
+                        <Button icon="plus" className="table-header-button">添加</Button>
+                    </div>
+                )}}
             />
         );
     }

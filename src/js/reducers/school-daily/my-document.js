@@ -5,7 +5,8 @@ import {objectAppend} from 'utils';
 
 const defaultState = {
     loading:false,
-    baseInfo:{}
+    baseInfo:{},
+    eduExperience:[]
 };
 
 export default (state,action) => {
@@ -15,7 +16,8 @@ export default (state,action) => {
             newState.loading = action.loading;
             break;
         case 'MY_DOCUMENT_LOAD':
-            newState.baseInfo = action.data;
+            newState.baseInfo = action.data.baseInfo;
+            newState.eduExperience = action.data.experience;
             break;
         default: return state||defaultState;
     }

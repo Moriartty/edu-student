@@ -1,4 +1,4 @@
-import { Calendar, Badge,Alert } from 'antd';
+import { Calendar, Badge,Alert ,Spin} from 'antd';
 import {connect} from 'react-redux';
 import action from 'actions/school-daily/my-daily'
 import moment from 'moment';
@@ -41,13 +41,15 @@ class MyDaily extends React.Component{
         })
     }
     render(){
-        const {onPanelChange,onSelect} = this.props;
+        const {onPanelChange,onSelect,loading} = this.props;
         const {selectedDate} = this.state;
         const selectedValue = this.props.list.length>0?this.props.list[selectedDate-1]:[];
         return (
             <div>
-                <EventDetail list={selectedValue}/>
-                <Calendar dateCellRender={this.dateCellRender} monthCellRender={monthCellRender}  onPanelChange={onPanelChange} onSelect={this.dateSelected}/>
+                <Spin spinning={loading}>
+                    <EventDetail list={selectedValue}/>
+                    <Calendar dateCellRender={this.dateCellRender} monthCellRender={monthCellRender}  onPanelChange={onPanelChange} onSelect={this.dateSelected}/>
+                </Spin>
             </div>
         );
     }

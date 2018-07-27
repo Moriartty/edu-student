@@ -8,7 +8,8 @@ const defaultState = {
         year:moment().year(),
         month:moment().month()+1,
     },
-    targetDate:moment().date()
+    targetDate:moment().date(),
+    loading:false,
 };
 
 export default (state,action) => {
@@ -22,6 +23,9 @@ export default (state,action) => {
             };
         case 'MY_DAILY_LOAD':
             newState.list = action.list;
+            break;
+        case 'MY_DAILY_LOADING':
+            newState.loading = action.loading;
             break;
         default:return state||defaultState;
     }
