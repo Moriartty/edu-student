@@ -1,5 +1,6 @@
 import { Table, Input, InputNumber, Popconfirm, Form,Button } from 'antd';
 import {connect} from 'react-redux';
+import ExModal from 'components/ExModal';
 import 'less/my-document.less';
 
 const FormItem = Form.Item;
@@ -59,7 +60,8 @@ class EditableCell extends React.Component {
 class EditableTable extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {  editingKey: '' };
+        this.state = {  editingKey: '' ,visible:false};
+        this.showModal = this.showModal.bind(this);
         this.columns = [
             {
                 title: '自何年何月起至何年何月止',
@@ -108,6 +110,24 @@ class EditableTable extends React.Component {
                 },
             },
         ];
+    }
+
+    showModal(){
+        this.setState({visible:true});
+    }
+
+    handleModalOk = (e) => {
+        console.log(e);
+        this.setState({
+            visible: false,
+        });
+    }
+
+    handleModalCancel = (e) => {
+        console.log(e);
+        this.setState({
+            visible: false,
+        });
     }
 
     isEditing = (record) => {
@@ -169,28 +189,36 @@ class EditableTable extends React.Component {
         });
 
         return (
-            <Table
-                components={components}
-                bordered
-                dataSource={eduExperience}
-                columns={columns}
-                rowClassName="editable-row"
-                pagination={false}
-                title={()=>{return (
-                    <div>
-                        主要学习经历
-                        <Button icon="plus" className="table-header-button">添加</Button>
-                    </div>
-                )}}
-            />
+            <div>
+                <ExModal visible={this.state.visible}
+                         title="添加学习经历"
+                         onOk={this.handleModalOk}
+                         onCancel={this.handleModalCancel}>
+
+                </ExModal>
+                <Table
+                    components={components}
+                    bordered
+                    dataSource={eduExperience}
+                    columns={columns}
+                    rowClassName="editable-row"
+                    pagination={false}
+                    title={()=>{return (
+                        <div>
+                            主要学习经历
+                            <Button icon="plus" type='primary' className="table-header-button" onClick={this.showModal}>添加</Button>
+                        </div>
+                    )}}
+                />
+            </div>
         );
     }
 }
 
 
 EditableTable = connect(state=>{
-    const {eduExperience} = state['school-daily/my-document'];
-    return {eduExperience};
+    const {eduExperience,experienceEditModalVisible} = state['school-daily/my-document'];
+    return {eduExperience,experienceEditModalVisible};
 },null)(EditableTable);
 
 export default EditableTable;

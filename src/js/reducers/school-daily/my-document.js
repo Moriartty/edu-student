@@ -6,7 +6,7 @@ import {objectAppend} from 'utils';
 const defaultState = {
     loading:false,
     baseInfo:{},
-    eduExperience:[]
+    eduExperience:[],
 };
 
 export default (state,action) => {

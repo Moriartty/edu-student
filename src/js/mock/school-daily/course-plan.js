@@ -49,7 +49,7 @@ module.exports = [
                         name:'@ctitle(6,10)',
                         no:'@increment'//专业规则号
                     },//专业
-                    level:'@ctitle(5,6)',//层次
+                    level:'@ctitle(2)',//层次
                     course:{
                         name:'@ctitle(3,5)',//课程
                         no:'@increment',//课程编号
