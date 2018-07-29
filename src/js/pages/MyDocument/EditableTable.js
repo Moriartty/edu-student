@@ -1,6 +1,6 @@
-import { Table, Input, InputNumber, Popconfirm, Form,Button } from 'antd';
+import { Table, Input, InputNumber, Popconfirm, Form,Button ,Divider} from 'antd';
 import {connect} from 'react-redux';
-import ExModal from 'components/ExModal';
+import ExperienceForm from './ExperienceForm';
 import 'less/my-document.less';
 
 const FormItem = Form.Item;
@@ -84,26 +84,36 @@ class EditableTable extends React.Component {
                         <div>
                             {editable ? (
                                 <span>
-                  <EditableContext.Consumer>
-                    {form => (
-                        <a
-                            href="javascript:;"
-                            onClick={() => this.save(form, record.key)}
-                            style={{ marginRight: 8 }}
-                        >
-                            Save
-                        </a>
-                    )}
-                  </EditableContext.Consumer>
-                  <Popconfirm
-                      title="确定取消?"
-                      onConfirm={() => this.cancel(record.key)}
-                  >
-                    <a>Cancel</a>
-                  </Popconfirm>
-                </span>
+                                      <EditableContext.Consumer>
+                                            {form => (
+                                                <a
+                                                    href="javascript:;"
+                                                    onClick={() => this.save(form, record.key)}
+                                                    style={{ marginRight: 8 }}
+                                                >
+                                                    Save
+                                                </a>
+                                            )}
+                                      </EditableContext.Consumer>
+                                      <Popconfirm
+                                          title="确定取消?"
+                                          onConfirm={() => this.cancel(record.key)}
+                                      >
+                                        <a>Cancel</a>
+                                      </Popconfirm>
+                                </span>
                             ) : (
-                                <a onClick={() => this.edit(record.key)}>Edit</a>
+                                <div>
+                                    <a onClick={() => this.edit(record.key)} className="item-edit">Edit</a>
+                                    <Divider type="vertical"/>
+                                    <Popconfirm
+                                        title="确认删除"
+                                        onConfirm={()=>this.delete(record.key)}
+                                    >
+                                        <a className="item-delete">Delete</a>
+                                    </Popconfirm>
+                                </div>
+
                             )}
                         </div>
                     );
@@ -117,7 +127,6 @@ class EditableTable extends React.Component {
     }
 
     handleModalOk = (e) => {
-        console.log(e);
         this.setState({
             visible: false,
         });
@@ -137,6 +146,13 @@ class EditableTable extends React.Component {
     edit(key) {
         this.setState({ editingKey: key });
     }
+    /**
+     * 删除一项学习经历
+     * */
+    delete(key) {
+        console.log(key);
+    }
+
 
     save(form, key) {
         form.validateFields((error, row) => {
@@ -190,12 +206,7 @@ class EditableTable extends React.Component {
 
         return (
             <div>
-                <ExModal visible={this.state.visible}
-                         title="添加学习经历"
-                         onOk={this.handleModalOk}
-                         onCancel={this.handleModalCancel}>
-
-                </ExModal>
+                <ExperienceForm visible={this.state.visible} handleModalOk={this.handleModalOk} handleModalCancel={this.handleModalCancel}/>
                 <Table
                     components={components}
                     bordered

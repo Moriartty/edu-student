@@ -47,10 +47,10 @@ export default {
          operations:[],
          page:(cb)=>{require.ensure([], require=>{cb(require('pages/MyDocument'));});}
      },
-    // "my-payment":{
-    //     name:'我的缴费',
-    //     icon:'bars',
-    //     operations:[],
-    //     page:(cb)=>{require.ensure([], require=>{cb(require('pages/MyPayment'));});}
-    // }
+    "school-daily/my-payment":{
+        name:'我的缴费',
+        icon:'bars',
+        operations:[],
+        page:(cb)=>{require.ensure([], require=>{cb(require('pages/MyPayment'));});}
+    }
 }

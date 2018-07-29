@@ -14,5 +14,13 @@ actions.loadData = () => (dispatch) => {
         dispatch({type:'MY_DOCUMENT_LOADING',loading:false});
     })
 };
+/**
+ * 提交个人学习经历数据
+ * */
+actions.submitExperienceData = () => (dispatch) => {
+    return ajax.post().then(data=>{
+
+    })
+}
 
 export default actions;

@@ -1,4 +1,4 @@
-import { Calendar, Badge,Alert ,Spin} from 'antd';
+import { Calendar, Badge,Spin} from 'antd';
 import {connect} from 'react-redux';
 import action from 'actions/school-daily/my-daily'
 import moment from 'moment';
