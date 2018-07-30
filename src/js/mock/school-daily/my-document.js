@@ -32,7 +32,7 @@ module.exports = [
                         'familyTel':'13888888888',//家庭电话
                         'email':'fsdafasf@1212.com',//邮箱
                     },
-                    'experience|1-3':[
+                    'experience|3':[
                         {
                             'key':'@increment',
                             'when':'@ctitle(4)',
@@ -40,6 +40,72 @@ module.exports = [
                         }
                     ]
                 }
+        }
+    },
+    {
+        desc:'增加一条我的档案记录',
+        type:'POST',
+        url:'/myDocument/add',
+        params:{
+            when:'何时',
+            where:'何地'
+        },
+        result:{
+            'code':'0',
+            'data':
+            {
+                'experience|4':[
+                    {
+                        'key':'@increment',
+                        'when':'@ctitle(4)',
+                        'where':'@ctitle(8)'
+                    }
+                ]
+            }
+        }
+    },
+    {
+        desc:'更新一条我的档案记录',
+        type:'POST',
+        url:'/myDocument/update',
+        params:{
+            key:'记录id',
+            when:'何时',
+            where:'何地'
+        },
+        result:{
+            'code':'0',
+            'data':
+            {
+                'experience|3':[
+                    {
+                        'key':'@increment',
+                        'when':'@ctitle(4)',
+                        'where':'@ctitle(8)'
+                    }
+                ]
+            }
+        }
+    },
+    {
+        desc:'更新一条我的档案记录',
+        type:'POST',
+        url:'/myDocument/delete',
+        params:{
+            key:'记录id',
+        },
+        result:{
+            'code':'0',
+            'data':
+            {
+                'experience|2':[
+                    {
+                        'key':'@increment',
+                        'when':'@ctitle(4)',
+                        'where':'@ctitle(8)'
+                    }
+                ]
+            }
         }
     },
 ];

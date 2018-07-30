@@ -16,8 +16,8 @@ export default (state,action) => {
             newState.loading = action.loading;
             break;
         case 'MY_DOCUMENT_LOAD':
-            newState.baseInfo = action.data.baseInfo;
-            newState.eduExperience = action.data.experience;
+            newState.baseInfo = action.data.baseInfo?action.data.baseInfo:state.baseInfo;
+            newState.eduExperience = action.data.experience?action.data.experience:state.expeience;
             break;
         default: return state||defaultState;
     }

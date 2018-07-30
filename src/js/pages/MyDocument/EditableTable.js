@@ -1,7 +1,7 @@
-import { Table, Input, InputNumber, Popconfirm, Form,Button ,Divider} from 'antd';
+import { Table, Input, InputNumber, Popconfirm, Form,Button ,Divider,notification} from 'antd';
 import {connect} from 'react-redux';
-import ExperienceForm from './ExperienceForm';
 import 'less/my-document.less';
+import action from 'actions/school-daily/my-document';
 
 const FormItem = Form.Item;
 const EditableContext = React.createContext();
@@ -32,12 +32,13 @@ class EditableCell extends React.Component {
             index,
             ...restProps
         } = this.props;
+
         return (
             <EditableContext.Consumer>
                 {(form) => {
                     const { getFieldDecorator } = form;
                     return (
-                        <td {...restProps}>
+                        <td >
                             {editing ? (
                                 <FormItem style={{ margin: 0 }}>
                                     {getFieldDecorator(dataIndex, {
@@ -60,20 +61,21 @@ class EditableCell extends React.Component {
 class EditableTable extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {  editingKey: '' ,visible:false};
-        this.showModal = this.showModal.bind(this);
+        this.state = { list:[], editingKey: '' };
+        this.handleAdd = this.handleAdd.bind(this);
+        this.delete = this.delete.bind(this);
         this.columns = [
             {
                 title: '自何年何月起至何年何月止',
                 dataIndex: 'when',
                 width: '42%',
-                editable: true,
+                editable: true
             },
             {
                 title: '在何地、何校学习',
                 dataIndex: 'where',
                 width: '42%',
-                editable: true,
+                editable: true
             },
             {
                 title: 'operation',
@@ -122,21 +124,8 @@ class EditableTable extends React.Component {
         ];
     }
 
-    showModal(){
-        this.setState({visible:true});
-    }
-
-    handleModalOk = (e) => {
-        this.setState({
-            visible: false,
-        });
-    }
-
-    handleModalCancel = (e) => {
-        console.log(e);
-        this.setState({
-            visible: false,
-        });
+    componentWillReceiveProps(nextProps){
+        this.setState({list:nextProps.eduExperience});
     }
 
     isEditing = (record) => {
@@ -150,7 +139,13 @@ class EditableTable extends React.Component {
      * 删除一项学习经历
      * */
     delete(key) {
-        console.log(key);
+        if(key===99999){
+            var newData = this.state.list.filter(item=>{
+                return item.key!==99999;
+            });
+            this.setState({list:newData});
+        }else
+            this.props.deleteExperience(key);
     }
 
 
@@ -159,20 +154,24 @@ class EditableTable extends React.Component {
             if (error) {
                 return;
             }
-            const newData = [...this.state.data];
-            const index = newData.findIndex(item => key === item.key);
-            if (index > -1) {
-                const item = newData[index];
-                newData.splice(index, 1, {
-                    ...item,
-                    ...row,
-                });
-                this.setState({ data: newData, editingKey: '' });
-            } else {
-                newData.push(row);
-                this.setState({ data: newData, editingKey: '' });
-            }
+            this.props.editExperience(key,row);
         });
+    }
+
+    handleAdd(){
+        const { list } = this.state;
+        //只允许存在一个待编辑内容,99999z作为待编辑未保存内容的rowKey
+        if(list.findIndex(item=>item.key===99999)>-1)
+            openNotificationWithIcon('error');
+        else{
+            const newData = {
+                key: 99999,
+            };
+            this.setState({
+                list: [...list, newData],
+                editingKey:99999
+            });
+        }
     }
 
     cancel = () => {
@@ -180,7 +179,6 @@ class EditableTable extends React.Component {
     };
 
     render() {
-        const {eduExperience} =this.props;
         const components = {
             body: {
                 row: EditableFormRow,
@@ -206,30 +204,45 @@ class EditableTable extends React.Component {
 
         return (
             <div>
-                <ExperienceForm visible={this.state.visible} handleModalOk={this.handleModalOk} handleModalCancel={this.handleModalCancel}/>
                 <Table
                     components={components}
                     bordered
-                    dataSource={eduExperience}
+                    dataSource={this.state.list}
                     columns={columns}
                     rowClassName="editable-row"
                     pagination={false}
                     title={()=>{return (
                         <div>
                             主要学习经历
-                            <Button icon="plus" type='primary' className="table-header-button" onClick={this.showModal}>添加</Button>
+                            <Button icon="plus" type='primary' className="table-header-button" onClick={this.handleAdd} size='small'>添加</Button>
                         </div>
                     )}}
+                    size="small"
                 />
             </div>
         );
     }
 }
 
+const openNotificationWithIcon = (type) => {
+    notification[type]({
+        message: '警告',
+        description: '有内容待编辑，请完成编辑保存后再继续添加！',
+        duration:2
+    });
+};
+
 
 EditableTable = connect(state=>{
-    const {eduExperience,experienceEditModalVisible} = state['school-daily/my-document'];
-    return {eduExperience,experienceEditModalVisible};
-},null)(EditableTable);
+    const {eduExperience} = state['school-daily/my-document'];
+    return {eduExperience};
+},dispatch=>({
+    editExperience(key,params){
+        dispatch(action.editExperience(key,params));
+    },
+    deleteExperience(key){
+        dispatch(action.deleteExperience(key));
+    }
+}))(EditableTable);
 
 export default EditableTable;

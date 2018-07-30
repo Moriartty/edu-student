@@ -29,12 +29,12 @@ export default {
     //     operations:[],
     //     page:(cb)=>{require.ensure([], require=>{cb(require('pages/MyHomework'));});}
     // },
-    // "exam-registration":{
-    //     name:'考试报名',
-    //     icon:'bars',
-    //     operations:[],
-    //     page:(cb)=>{require.ensure([], require=>{cb(require('pages/ExamRegistration'));});}
-    // },
+     "school-daily/exam-registration":{
+         name:'考试报名',
+         icon:'bars',
+         operations:[],
+         page:(cb)=>{require.ensure([], require=>{cb(require('pages/ExamRegistration'));});}
+     },
     // "result-inquiry":{
     //     name:'成绩查询',
     //     icon:'bars',
