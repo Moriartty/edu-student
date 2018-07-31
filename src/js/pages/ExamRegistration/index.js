@@ -6,6 +6,7 @@ import SearchModal from './SearchModal';
 import {connect} from 'react-redux';
 import action from 'actions/school-daily/exam-registration';
 import RegistrationTable from './RegistrationTable';
+import 'less/exam-registration.less';
 
 class ExamRegistration extends React.Component{
     componentWillMount(){

@@ -2,6 +2,8 @@
  * Created by user on 18-7-30.
  */
 import ajax from 'utils/ajax';
+import menuConfig from 'config/menu';
+import NProgress from "nprogress";
 let actions = {};
 
 /**
@@ -27,6 +29,33 @@ actions.loadData = (pageNo,pageSize) => (dispatch,getState) => {
         })
     })
 };
+actions.loadApplicationPage = (id) => (dispatch,getState) => {
+    const appState = getState().app;
+    const module = 'school-daily/exam-application';
+    const panes=appState.panes;
+    const index=panes.findIndex(o => o.key==module);
+    if(~index) {
+        //已经存在，直接激活
+        dispatch({type: 'APP_TAB_SWITCH', key: module});
+    }else{
+        // NProgress.done().start();
+        const menu = menuConfig[module];
+        menu.page(component => {
+            NProgress.done();
+            dispatch({type:'APP_TAB_CHANGE', panes:panes.concat([{
+                    title: menu.name,
+                    key: module,
+                    icon:menu.icon,
+                    component: React.createElement(component)
+                }]), key:module});
+        });
+    }
+    // dispatch({type:'COURSE_DETAIL_LOADING',loading:true});
+    // return ajax.get('/coursePlan/courseDetail',{semesterId}).then(data=>{
+    //     dispatch({type:'COURSE_DETAIL_LOAD',courseDetails:data});
+    //     dispatch({type:'COURSE_DETAIL_LOADING'});
+    // })
+}
 /**
  * 获取学期列表
  * */

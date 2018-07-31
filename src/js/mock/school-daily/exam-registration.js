@@ -36,7 +36,10 @@ module.exports = [
                         },//考试时间
                         'examFee':'@increment',//考试费用
                         'highestScore':'@increment',//历史最高成绩
-                        'regisStatus':'已报名',//报名状态
+                        'regisStatus':'1',//报名状态,
+                        //0:不可报名
+                        //1:可报名
+                        //2:已报名
                         'restNum':'@increment',//剩余可报人数
                     }
                 ]

@@ -4,6 +4,9 @@
 import ExTable from 'components/ExTable';
 import {connect} from 'react-redux';
 import action from 'actions/school-daily/exam-registration';
+import {Badge} from 'antd';
+
+const regisStatusText = {0:'不可报名',1:"可报名",2:"已报名"};
 
 class RegistrationTable extends React.Component{
     constructor(props){
@@ -17,13 +20,37 @@ class RegistrationTable extends React.Component{
             {title:'试卷号',dataIndex:'testPaper.no'},
             {title:'是否开卷',dataIndex:'isOpenTest'},
             {title:'考试方式',dataIndex:'testType'},
-            {title:'考试时间',dataIndex:'duration',render:(val,data)=>{<div>{val.start}-{val.end}</div>}},
+            {title:'考试时间',dataIndex:'duration',render:(val,data)=>{
+                    return (
+                        <div className='timeItems'>
+                            <p>{val.start}</p>
+                            <p>~</p>
+                            <p>{val.end}</p>
+                        </div>
+                    )
+            }},
             {title:'考试费用',dataIndex:'examFee'},
             {title:'历史最高成绩',dataIndex:'highestScore'},
-            {title:'报名状态',dataIndex:'regisStatus',},
+            {title:'报名状态',dataIndex:'regisStatus',render:(val,data)=>{
+                switch(val){
+                    case '0':break;
+                    case '1':
+                        const id = data.id;
+                        return <a className="canRegistrationItem" href='javascript:;' onClick={()=>this.handleSignUp(id)}>
+                                    <Badge status='processing' title='报名' text={regisStatusText[val]} />
+                                </a>;
+                    case '2':break;
+                }
+            }},
             {title:'剩余可报人数',dataIndex:'restNum'},
-        ]
+        ];
+        this.handleSignUp = this.handleSignUp.bind(this);
     }
+
+    handleSignUp(id){
+        this.props.loadApplicationTable(id);
+    }
+
     render(){
         const {list,mainTableLoading:loading,page,onChange} = this.props;
         return (
@@ -46,6 +73,9 @@ RegistrationTable = connect(state=>{
 },dispatch=>({
     onChange(pagination, filters, sorter){
         dispatch(action.loadData(pagination.current, pagination.pageSize));
+    },
+    loadApplicationTable(id){
+        dispatch(action.loadApplicationPage(id));
     }
 }))(RegistrationTable);
 

@@ -35,6 +35,12 @@ export default {
          operations:[],
          page:(cb)=>{require.ensure([], require=>{cb(require('pages/ExamRegistration'));});}
      },
+    "school-daily/exam-application":{
+        name:'考试报名申请',
+        icon:'bars',
+        operations:[],
+        page:(cb)=>{require.ensure([], require=>{cb(require('pages/ExamRegistration/ApplicationTable'));});}
+    },
     // "result-inquiry":{
     //     name:'成绩查询',
     //     icon:'bars',
