@@ -50,12 +50,21 @@ actions.loadApplicationPage = (id) => (dispatch,getState) => {
                 }]), key:module});
         });
     }
-    // dispatch({type:'COURSE_DETAIL_LOADING',loading:true});
     // return ajax.get('/coursePlan/courseDetail',{semesterId}).then(data=>{
     //     dispatch({type:'COURSE_DETAIL_LOAD',courseDetails:data});
     //     dispatch({type:'COURSE_DETAIL_LOADING'});
     // })
-}
+};
+/**
+ * 提交考试申请
+ * */
+actions.submitTestApplication = (params) => (dispatch) => {
+    dispatch({type:'EXAM_REGIS_SUBMITTING',loading:true});
+    ajax.post('/examRegistration/uploadApplication',params).then(data=>{
+        dispatch({type:'EXAM_REGIS_SUBMITTING',loading:false});
+        dispatch({type:"EXAM_REGIS_CLOSE_APPLICATION_PAGE",close:true});
+    })
+};
 /**
  * 获取学期列表
  * */

@@ -20,7 +20,9 @@ const defaultState = {
     list:[],
     semesterList:[],
     subjectList:[],
-    courseList:[]
+    courseList:[],
+    appliSubmitting:false,//提交页面是否处于提交状态
+    closeApplicationPage:false,//是否关闭提交页面
 };
 
 export default (state,action) => {
@@ -53,6 +55,12 @@ export default (state,action) => {
                 startDate:action.startDate?action.startDate:state.startDate,
                 endDate:action.endDate?action.endDate:state.endDate
             };
+            break;
+        case 'EXAM_REGIS_SUBMITTING':
+            newState.appliSubmitting = action.loading;
+            break;
+        case 'EXAM_REGIS_CLOSE_APPLICATION_PAGE':
+            newState.closeApplicationPage = action.close;
             break;
         default:return state||defaultState;
     }

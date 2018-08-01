@@ -1,15 +1,25 @@
 import {connect} from 'react-redux';
-import {Row,Col,Avatar} from 'antd';
+import {Row,Col,Avatar,Button,Icon} from 'antd';
 import 'less/my-document.less';
 import defaultAvatar from 'img/avatar-default.png';
+import BaseInfoEditModal from './BaseInfoEditModal';
 
 const titleSpan = 4,contentSpan=8;
 
 class BaseInfoTable extends React.Component{
+    constructor(props){
+        super(props);
+        this.editBaseInfo = this.editBaseInfo.bind(this);
+    }
+    editBaseInfo(){
+        this.props.openModal();
+    }
+
     render(){
         const {baseInfo:data} = this.props;
         return (
             <div>
+                <BaseInfoEditModal/>
                 <Row className="document-header" gutter={0}>
                     <Col span={4} className="avatar-container">
                         <a className="hd" title="修改头像">
@@ -17,6 +27,14 @@ class BaseInfoTable extends React.Component{
                         </a>
                     </Col>
                     <Col span={20}>
+                        <Row gutter={0}>
+                            <Col span={24}>
+                                <div className="baseInfo-header">
+                                    <span className="baseInfo-header-title">基本信息</span>
+                                    <Button type="primary" onClick={this.editBaseInfo} size="small"><Icon type="edit" />编辑</Button>
+                                </div>
+                            </Col>
+                        </Row>
                         <Row gutter={0}>
                             <Col className="document-header-item-title" span={titleSpan}>姓名</Col>
                             <Col className="document-header-item-content" span={contentSpan}>{data.name}</Col>
@@ -81,6 +99,10 @@ class BaseInfoTable extends React.Component{
 BaseInfoTable = connect(state=>{
     const {baseInfo} = state['school-daily/my-document'];
     return {baseInfo};
-},null)(BaseInfoTable);
+},dispatch=>({
+    openModal(){
+        dispatch({type:'MY_DOCUMENT_BASEINFO_MODAL_VISIBLE',visible:true});
+    }
+}))(BaseInfoTable);
 
 export default BaseInfoTable;

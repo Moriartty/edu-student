@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import ExTable from 'components/ExTable';
-//import 'less/course-plan';
+import 'less/course-plan';
 class CourseTable extends React.Component{
     constructor(props){
         super(props);

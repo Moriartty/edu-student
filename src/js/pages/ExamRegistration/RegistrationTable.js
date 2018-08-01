@@ -33,13 +33,15 @@ class RegistrationTable extends React.Component{
             {title:'历史最高成绩',dataIndex:'highestScore'},
             {title:'报名状态',dataIndex:'regisStatus',render:(val,data)=>{
                 switch(val){
-                    case '0':break;
-                    case '1':
+                    case 0:
+                        return <a className="cannotRegistrationItem" href="javascript:;"><Badge status='default' text={regisStatusText[val]}/></a>
+                    case 1:
                         const id = data.id;
                         return <a className="canRegistrationItem" href='javascript:;' onClick={()=>this.handleSignUp(id)}>
                                     <Badge status='processing' title='报名' text={regisStatusText[val]} />
                                 </a>;
-                    case '2':break;
+                    case 2:
+                        return <a className="hadRegistrationItem" href="javascript:;"><Badge status='success' text={regisStatusText[val]}/></a>
                 }
             }},
             {title:'剩余可报人数',dataIndex:'restNum'},

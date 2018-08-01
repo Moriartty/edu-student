@@ -36,7 +36,7 @@ module.exports = [
                         },//考试时间
                         'examFee':'@increment',//考试费用
                         'highestScore':'@increment',//历史最高成绩
-                        'regisStatus':'1',//报名状态,
+                        'regisStatus':'@integer(0,2)',//报名状态,
                         //0:不可报名
                         //1:可报名
                         //2:已报名
@@ -96,5 +96,25 @@ module.exports = [
                 }
             ]
         }
-    }
+    },
+    {
+        desc:'提交考试申请',
+        type:'POST',
+        url:'/examRegistration/uploadApplication',
+        params:{
+            name:"学生姓名",
+            studentId:'学号',
+            campus:'校区',
+            grade:"年级",
+            class:"班级",
+            subject:"专业",
+            semester:"学期",
+            course:"课程",
+            payment:"缴费"
+        },
+        result: {
+            'code': '0',
+            'data':{}
+        }
+    },
 ]

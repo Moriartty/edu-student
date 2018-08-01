@@ -71,7 +71,6 @@ class SearchModal extends React.Component{
     }
 
     handleOk(){
-        this.setState({loading:true});
 
         const form = this.form;
         form.validateFields((err, data) => {

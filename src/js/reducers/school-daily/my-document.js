@@ -7,6 +7,7 @@ const defaultState = {
     loading:false,
     baseInfo:{},
     eduExperience:[],
+    baseInfoModalVisible:false
 };
 
 export default (state,action) => {
@@ -18,6 +19,9 @@ export default (state,action) => {
         case 'MY_DOCUMENT_LOAD':
             newState.baseInfo = action.data.baseInfo?action.data.baseInfo:state.baseInfo;
             newState.eduExperience = action.data.experience?action.data.experience:state.expeience;
+            break;
+        case 'MY_DOCUMENT_BASEINFO_MODAL_VISIBLE':
+            newState.baseInfoModalVisible = action.visible;
             break;
         default: return state||defaultState;
     }
