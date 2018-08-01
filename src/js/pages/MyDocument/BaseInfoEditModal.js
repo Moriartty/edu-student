@@ -6,6 +6,7 @@ import ExFormItem from 'components/ExFormItem';
 import {connect} from 'react-redux';
 import action from 'actions/school-daily/my-document';
 import {Form,Row,Col} from 'antd';
+import moment from 'moment';
 
 const BaseInfoForm = Form.create(
     {
@@ -15,7 +16,7 @@ const BaseInfoForm = Form.create(
             const baseInfo = props.baseInfo;
             return {
                 name:Form.createFormField({value:baseInfo.name}),
-                birthDay:Form.createFormField({value:baseInfo.birthDay}),
+                birthDay:Form.createFormField({value:moment(baseInfo.birthDay)}),
                 gender:Form.createFormField({value:baseInfo.gender}),
                 nation:Form.createFormField({value:baseInfo.nation}),
                 certificate:Form.createFormField({value:baseInfo.certificate}),
@@ -24,8 +25,8 @@ const BaseInfoForm = Form.create(
                 studentCategory:Form.createFormField({value:baseInfo.studentCategory}),
                 eduLevel:Form.createFormField({value:baseInfo.eduLevel}),
                 professional:Form.createFormField({value:baseInfo.professional}),
-                admissionTime:Form.createFormField({value:baseInfo.admissionTime}),
-                graduationTime:Form.createFormField({value:baseInfo.graduationTime}),
+                admissionTime:Form.createFormField({value:moment(baseInfo.admissionTime)}),
+                graduationTime:Form.createFormField({value:moment(baseInfo.graduationTime)}),
                 regisNum:Form.createFormField({value:baseInfo.regisNum}),
                 employer:Form.createFormField({value:baseInfo.employer}),
                 employerPhone:Form.createFormField({value:baseInfo.employerPhone}),
@@ -45,7 +46,7 @@ const BaseInfoForm = Form.create(
                     <ExFormItem label="姓名" name="name" type="input" getFieldDecorator={getFieldDecorator}/>
                 </Col>
                 <Col span={12}>
-                    <ExFormItem label="出生日期" name="birthDay" type="input" getFieldDecorator={getFieldDecorator}/>
+                    <ExFormItem label="出生日期" name="birthDay" type="date" getFieldDecorator={getFieldDecorator}/>
                 </Col>
             </Row>
             <Row>
@@ -82,10 +83,10 @@ const BaseInfoForm = Form.create(
             </Row>
             <Row>
                 <Col span={12}>
-                    <ExFormItem label="入学时间" name="admissionTime" type="input" getFieldDecorator={getFieldDecorator}/>
+                    <ExFormItem label="入学时间" name="admissionTime" type="date" getFieldDecorator={getFieldDecorator}/>
                 </Col>
                 <Col span={12}>
-                    <ExFormItem label="毕业时间" name="graduationTime" type="input" getFieldDecorator={getFieldDecorator}/>
+                    <ExFormItem label="毕业时间" name="graduationTime" type="date" getFieldDecorator={getFieldDecorator}/>
                 </Col>
             </Row>
             <Row>
@@ -98,7 +99,7 @@ const BaseInfoForm = Form.create(
             </Row>
             <Row>
                 <Col span={12}>
-                    <ExFormItem label="单位电话" name="employerPhone" type="input" getFieldDecorator={getFieldDecorator}/>
+                    <ExFormItem label="单位电话" name="employerPhone" type="tel" getFieldDecorator={getFieldDecorator}/>
                 </Col>
                 <Col span={12}>
                     <ExFormItem label="电话" name="phoneNum" type="input" getFieldDecorator={getFieldDecorator}/>
@@ -124,6 +125,10 @@ class BaseInfoEditModal extends React.Component{
         this.handleOk = this.handleOk.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+
+    }
+
     handleCancel(){
         this.props.closeModal();
     }
@@ -140,7 +145,7 @@ class BaseInfoEditModal extends React.Component{
     }
 
     render(){
-        const {baseInfoModalVisible:visible,baseInfo} = this.props;
+        const {baseInfoModalVisible:visible,baseInfo,baseInfoModalSubmitting:submitting} = this.props;
         return (
             <ExModal
                 visible={visible}
@@ -150,6 +155,7 @@ class BaseInfoEditModal extends React.Component{
                 okText="提交"
                 cancelText="取消"
                 width='800px'
+                confirmLoading={submitting}
                 >
                 <BaseInfoForm ref={this.saveFormRef} baseInfo={baseInfo}/>
             </ExModal>
@@ -158,14 +164,14 @@ class BaseInfoEditModal extends React.Component{
 }
 
 BaseInfoEditModal = connect(state=>{
-    const {baseInfoModalVisible,baseInfo} = state['school-daily/my-document'];
-    return {baseInfoModalVisible,baseInfo};
+    const {baseInfoModalVisible,baseInfo,baseInfoModalSubmitting} = state['school-daily/my-document'];
+    return {baseInfoModalVisible,baseInfo,baseInfoModalSubmitting};
 },dispatch=>({
     closeModal(){
         dispatch({type:'MY_DOCUMENT_BASEINFO_MODAL_VISIBLE',visible:false});
     },
     submit(params){
-        console.log(params);
+        dispatch(action.editBaseInfo(params));
     }
 }))(BaseInfoEditModal);
 

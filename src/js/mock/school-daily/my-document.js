@@ -43,9 +43,24 @@ module.exports = [
         }
     },
     {
+        desc:'保存我的基本信息',
+        type:'POST',
+        url:'/myDocument/baseInfo/edit',
+        params:{
+            key:'记录id',
+        },
+        result:{
+            'code':'0',
+            'data':
+                {
+
+                }
+        }
+    },
+    {
         desc:'增加一条我的档案记录',
         type:'POST',
-        url:'/myDocument/add',
+        url:'/myDocument/experience/add',
         params:{
             when:'何时',
             where:'何地'
@@ -67,7 +82,7 @@ module.exports = [
     {
         desc:'更新一条我的档案记录',
         type:'POST',
-        url:'/myDocument/update',
+        url:'/myDocument/experience/update',
         params:{
             key:'记录id',
             when:'何时',
@@ -90,7 +105,7 @@ module.exports = [
     {
         desc:'更新一条我的档案记录',
         type:'POST',
-        url:'/myDocument/delete',
+        url:'/myDocument/experience/delete',
         params:{
             key:'记录id',
         },

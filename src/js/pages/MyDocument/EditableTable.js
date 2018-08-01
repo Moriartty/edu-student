@@ -162,7 +162,7 @@ class EditableTable extends React.Component {
         const { list } = this.state;
         //只允许存在一个待编辑内容,99999z作为待编辑未保存内容的rowKey
         if(list.findIndex(item=>item.key===99999)>-1)
-            openNotificationWithIcon('error');
+            this.props.showNotification({show:true,type:'error',msg:'警告',desc:"有内容待编辑，请完成编辑保存后再继续添加！"});
         else{
             const newData = {
                 key: 99999,
@@ -224,14 +224,6 @@ class EditableTable extends React.Component {
     }
 }
 
-const openNotificationWithIcon = (type) => {
-    notification[type]({
-        message: '警告',
-        description: '有内容待编辑，请完成编辑保存后再继续添加！',
-        duration:2
-    });
-};
-
 
 EditableTable = connect(state=>{
     const {eduExperience} = state['school-daily/my-document'];
@@ -242,6 +234,9 @@ EditableTable = connect(state=>{
     },
     deleteExperience(key){
         dispatch(action.deleteExperience(key));
+    },
+    showNotification(obj){
+        dispatch({type:"MY_DOCUMENT_SHOW_NOTIFICATION",obj});
     }
 }))(EditableTable);
 
