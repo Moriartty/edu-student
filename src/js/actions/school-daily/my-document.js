@@ -62,5 +62,23 @@ actions.deleteExperience = (key) => (dispatch) => {
         dispatch({type:'MY_DOCUMENT_LOADING',loading:false});
     })
 };
+/**
+ * 编辑other信息
+ * */
+actions.editOtherInfo = (params) => (dispatch) => {
+    dispatch({type:"MY_DOCUMENT_OTHERINFO_MODAL_SUBMITTING",submitting:true});
+    ajax.post('/myDocument/otherInfo/edit',params).then(data=>{
+        const obj = {
+            type:'success',
+            msg:'提交成功',
+            show:true
+        };
+        dispatch({type:"MY_DOCUMENT_SHOW_NOTIFICATION",obj});
+        dispatch({type:"MY_DOCUMENT_OTHERINFO_MODAL_SUBMITTING",submitting:false});
+        dispatch({type:"MY_DOCUMENT_OTHERINFO_MODAL_VISIBLE",visible:false});
+        //提交成功后重新获取baseInfo,这里考虑是否需要重新加载还是用post返回的数据
+        // dispatch(actions.loadData());
+    })
+}
 
 export default actions;

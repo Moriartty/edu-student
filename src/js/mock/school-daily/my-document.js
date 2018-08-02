@@ -38,7 +38,13 @@ module.exports = [
                             'when':'@ctitle(4)',
                             'where':'@ctitle(8)'
                         }
-                    ]
+                    ],
+                    'otherInfo':{
+                        internShips:'ABC建筑工地',
+                        'graduationThesis':'@ctitle(20)',
+                        'rewards':'无',
+                        'selfEvaluation':'混乱邪恶'
+                    }
                 }
         }
     },
@@ -120,6 +126,21 @@ module.exports = [
                         'where':'@ctitle(8)'
                     }
                 ]
+            }
+        }
+    },
+    {
+        desc:'保存我的其他信息',
+        type:'POST',
+        url:'/myDocument/otherInfo/edit',
+        params:{
+            key:'记录id',
+        },
+        result:{
+            'code':'0',
+            'data':
+            {
+
             }
         }
     },

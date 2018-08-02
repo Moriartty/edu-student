@@ -7,8 +7,12 @@ const defaultState = {
     loading:false,
     baseInfo:{},
     eduExperience:[],
+    otherInfo:{},
+    opinions:{},
     baseInfoModalVisible:false,
     baseInfoModalSubmitting:false,
+    otherInfoModalVisible:false,
+    otherInfoModalSubmitting:false,
     showNotification:false,
     notification:{
         type:'',
@@ -27,6 +31,8 @@ export default (state,action) => {
         case 'MY_DOCUMENT_LOAD':
             newState.baseInfo = action.data.baseInfo?action.data.baseInfo:state.baseInfo;
             newState.eduExperience = action.data.experience?action.data.experience:state.expeience;
+            newState.otherInfo = action.data.otherInfo?action.data.otherInfo:state.otherInfo;
+            newState.opinions = action.data.opinions?action.data.opinions:state.opinions;
             break;
         case 'MY_DOCUMENT_BASEINFO_MODAL_VISIBLE':
             newState.baseInfoModalVisible = action.visible;
@@ -42,6 +48,12 @@ export default (state,action) => {
                 desc:action.obj.desc?action.obj.desc:state.notification.desc,
                 duration:action.obj.duration?action.obj.duration:state.notification.duration,
             };
+            break;
+        case 'MY_DOCUMENT_OTHERINFO_MODAL_VISIBLE':
+            newState.otherInfoModalVisible = action.visible;
+            break;
+        case "MY_DOCUMENT_OTHERINFO_MODAL_SUBMITTING":
+            newState.otherInfoModalSubmitting = action.submitting;
             break;
         default: return state||defaultState;
     }

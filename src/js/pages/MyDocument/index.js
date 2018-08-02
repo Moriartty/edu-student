@@ -4,6 +4,8 @@
 import {connect} from 'react-redux';
 import BaseInfoTable from './BaseInfoTable';
 import EditableTable from './EditableTable';
+import OtherInfoTable from './OtherInfoTable';
+import OpinionsTable from './OpinionsTable';
 import openNotification from 'components/ExNotification';
 import action from 'actions/school-daily/my-document';
 import {Spin} from 'antd';
@@ -15,7 +17,6 @@ class MyDocument extends React.Component{
     }
 
     componentWillReceiveProps(nextProps) {
-        // console.log(nextProps);
         if(nextProps.showNotification){
             openNotification(nextProps.notification);
             //在开启notification后立即将show置为false,放置本页面props改变时因为show=true而出现多个notification
@@ -30,6 +31,8 @@ class MyDocument extends React.Component{
                 <Spin spinning={loading}>
                     <BaseInfoTable/>
                     <EditableTable/>
+                    <OtherInfoTable/>
+                    <OpinionsTable/>
                 </Spin>
             </div>
         )

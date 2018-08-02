@@ -5,8 +5,8 @@ import RegionSelector from 'components/RegionSelector';
 import moment from 'moment';
 
 const formItemLayout = {
-    labelCol: {span:6},
-    wrapperCol: {span:18}
+    labelCol: {span:8},
+    wrapperCol: {span:16}
 };
 
 class InputFile extends React.PureComponent {
