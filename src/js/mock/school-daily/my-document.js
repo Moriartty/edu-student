@@ -44,7 +44,15 @@ module.exports = [
                         'graduationThesis':'@ctitle(20)',
                         'rewards':'无',
                         'selfEvaluation':'混乱邪恶'
-                    }
+                    },
+                    'opinions|3':[
+                        {
+                            id:'@increment',
+                            opinion:'@ctitle(15)',
+                            reviewer:'@cname',
+                            timeStamp:'2018-01-01'
+                        }
+                    ]
                 }
         }
     },

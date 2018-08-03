@@ -8,7 +8,7 @@ const defaultState = {
     baseInfo:{},
     eduExperience:[],
     otherInfo:{},
-    opinions:{},
+    opinions:[],
     baseInfoModalVisible:false,
     baseInfoModalSubmitting:false,
     otherInfoModalVisible:false,
@@ -41,6 +41,7 @@ export default (state,action) => {
             newState.baseInfoModalSubmitting = action.submitting;
             break;
         case "MY_DOCUMENT_SHOW_NOTIFICATION":
+            state.notification.desc = '';
             newState.showNotification = action.obj.show;
             newState.notification = {
                 type:action.obj.type?action.obj.type:state.notification.type,

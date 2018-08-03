@@ -31,7 +31,7 @@ actions.editBaseInfo = (params) => (dispatch) => {
         //提交成功后重新获取baseInfo,这里考虑是否需要重新加载还是用post返回的数据
         // dispatch(actions.loadData());
     })
-}
+};
 /**
  * 编辑一条个人学习经历数据
  * */
