@@ -13,13 +13,6 @@ const defaultState = {
     baseInfoModalSubmitting:false,
     otherInfoModalVisible:false,
     otherInfoModalSubmitting:false,
-    showNotification:false,
-    notification:{
-        type:'',
-        msg:'',
-        desc:'',
-        duration:2
-    }
 };
 
 export default (state,action) => {
@@ -39,16 +32,6 @@ export default (state,action) => {
             break;
         case "MY_DOCUMENT_BASEINFO_MODAL_SUBMITTING":
             newState.baseInfoModalSubmitting = action.submitting;
-            break;
-        case "MY_DOCUMENT_SHOW_NOTIFICATION":
-            state.notification.desc = '';
-            newState.showNotification = action.obj.show;
-            newState.notification = {
-                type:action.obj.type?action.obj.type:state.notification.type,
-                msg:action.obj.msg?action.obj.msg:state.notification.msg,
-                desc:action.obj.desc?action.obj.desc:state.notification.desc,
-                duration:action.obj.duration?action.obj.duration:state.notification.duration,
-            };
             break;
         case 'MY_DOCUMENT_OTHERINFO_MODAL_VISIBLE':
             newState.otherInfoModalVisible = action.visible;

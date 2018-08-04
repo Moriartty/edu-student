@@ -236,7 +236,7 @@ EditableTable = connect(state=>{
         dispatch(action.deleteExperience(key));
     },
     showNotification(obj){
-        dispatch({type:"MY_DOCUMENT_SHOW_NOTIFICATION",obj});
+        dispatch({type:"APP_SHOW_NOTIFICATION",obj});
     }
 }))(EditableTable);
 

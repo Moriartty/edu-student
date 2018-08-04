@@ -21,8 +21,8 @@ const defaultState = {
     semesterList:[],
     subjectList:[],
     courseList:[],
+    subPageVisible:false,
     appliSubmitting:false,//提交页面是否处于提交状态
-    closeApplicationPage:false,//是否关闭提交页面
 };
 
 export default (state,action) => {
@@ -59,8 +59,8 @@ export default (state,action) => {
         case 'EXAM_REGIS_SUBMITTING':
             newState.appliSubmitting = action.loading;
             break;
-        case 'EXAM_REGIS_CLOSE_APPLICATION_PAGE':
-            newState.closeApplicationPage = action.close;
+        case 'EXAM_REGIS_TOGGLE_SUBPAGE_VISIBLE':
+            newState.subPageVisible = action.subPageVisible;
             break;
         default:return state||defaultState;
     }

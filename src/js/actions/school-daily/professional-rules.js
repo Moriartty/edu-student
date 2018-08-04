@@ -25,7 +25,6 @@ actions.loadData = () => (dispatch) =>{
 actions.loadRepairCourses = () => (dispatch) => {
     dispatch({type:'PROFESSIONAL_RULES_REPAIR_LOADING',loading:true});
     ajax.get('/professionalRules/repairCourses').then(data=>{
-        console.log('data',data);
         dispatch({type:'PROFESSIONAL_RULES_REPAIR_LOAD',data:data});
         dispatch({type:'PROFESSIONAL_RULES_REPAIR_LOADING'});
     })

@@ -17,7 +17,14 @@ const defaultState={
     menuData:null,
     menuObj:{},
     hasNoticeModule:false,
-    unreadCount:0 //未读通知数
+    unreadCount:0, //未读通知数
+    showNotification:false,//控制notification显示
+    notification:{//控制notification内容
+        type:'',
+        msg:'',
+        desc:'',
+        duration:2
+    }
 };
 export default (state, action) => {
     let newState={};
@@ -67,6 +74,17 @@ export default (state, action) => {
             break;
         case 'APP_STUDENT_TYPE_DIC_LIST':
             newState.studentTypeDicList=action.list;
+            break;
+        case "APP_SHOW_NOTIFICATION":
+            // console.log('action',action);
+            state.notification.desc = '';
+            newState.showNotification = action.obj.show;
+            newState.notification = {
+                type:action.obj.type?action.obj.type:state.notification.type,
+                msg:action.obj.msg?action.obj.msg:state.notification.msg,
+                desc:action.obj.desc?action.obj.desc:state.notification.desc,
+                duration:action.obj.duration?action.obj.duration:state.notification.duration,
+            };
             break;
         default:return state||defaultState;
     }

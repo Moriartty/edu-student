@@ -5,10 +5,20 @@ import Topbar from './Topbar';
 import Sidebar from './Sidebar';
 import Copyright from './Copyright';
 import action from 'actions/app';
+import openNotification from "components/ExNotification";
 
 class MasterPage extends React.Component {
     componentWillMount(){
         this.props.onWillMount();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.showNotification){
+            openNotification(nextProps.notification);
+            //在开启notification后立即将show置为false,放置页面props改变时因为show=true而出现多个notification
+            this.props.closeNotification();
+            return false;
+        }
     }
 
     onEdit = (targetKey, action) => {
@@ -67,8 +77,8 @@ class MasterPage extends React.Component {
 }
 
 MasterPage = connect(state => {
-    const {panes, activeTab} = state.app;
-    return {panes, activeTab};
+    const {panes, activeTab,showNotification,notification} = state.app;
+    return {panes, activeTab,showNotification,notification};
 }, dispatch => ({
     onTabChange(key){
         dispatch({type:'APP_TAB_SWITCH', key});
@@ -94,6 +104,9 @@ MasterPage = connect(state => {
             //加载日期信息
             dispatch(action.loadDataInfo());
         });
+    },
+    closeNotification(){
+        dispatch({type:"APP_SHOW_NOTIFICATION",obj:{show:false}});
     }
 }))(MasterPage);
 

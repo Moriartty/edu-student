@@ -10,6 +10,7 @@ let actions = {};
  * search加载数据
  * */
 actions.loadData = (pageNo,pageSize) => (dispatch,getState) => {
+    console.log('aaa');
     const state  = getState()['school-daily/exam-registration'];
     const page = state.page;
     const params = state.searchParams;
@@ -29,6 +30,9 @@ actions.loadData = (pageNo,pageSize) => (dispatch,getState) => {
         })
     })
 };
+/**
+ * 此方法暂时废弃不用
+ * */
 actions.loadApplicationPage = (id) => (dispatch,getState) => {
     const appState = getState().app;
     const module = 'school-daily/exam-application';
@@ -62,7 +66,10 @@ actions.submitTestApplication = (params) => (dispatch) => {
     dispatch({type:'EXAM_REGIS_SUBMITTING',loading:true});
     ajax.post('/examRegistration/uploadApplication',params).then(data=>{
         dispatch({type:'EXAM_REGIS_SUBMITTING',loading:false});
-        dispatch({type:"EXAM_REGIS_CLOSE_APPLICATION_PAGE",close:true});
+        dispatch({type:'APP_SHOW_NOTIFICATION',obj:{type:'success', msg:'提交成功', show:true}});
+        //通知submit成功
+        dispatch({type:"EXAM_REGIS_TOGGLE_SUBPAGE_VISIBLE",visible:false});
+        dispatch(actions.loadData());
     })
 };
 /**

@@ -11,6 +11,7 @@ const regisStatusText = {0:'不可报名',1:"可报名",2:"已报名"};
 class RegistrationTable extends React.Component{
     constructor(props){
         super(props);
+        this.state = {show:false};
         this.columns = [
             {title:'序号',dataIndex:'id'},
             {title:'学期',dataIndex:'semester'},
@@ -50,7 +51,7 @@ class RegistrationTable extends React.Component{
     }
 
     handleSignUp(id){
-        this.props.loadApplicationTable(id);
+        this.props.onRegis();
     }
 
     render(){
@@ -64,7 +65,7 @@ class RegistrationTable extends React.Component{
                 pageSize={page.pageSize}
                 dataCount={page.dataCount}
                 onChange={onChange}
-                />
+            />
         )
     }
 }
@@ -76,9 +77,6 @@ RegistrationTable = connect(state=>{
     onChange(pagination, filters, sorter){
         dispatch(action.loadData(pagination.current, pagination.pageSize));
     },
-    loadApplicationTable(id){
-        dispatch(action.loadApplicationPage(id));
-    }
 }))(RegistrationTable);
 
 export default RegistrationTable;

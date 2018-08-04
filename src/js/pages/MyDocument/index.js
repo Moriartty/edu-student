@@ -16,14 +16,6 @@ class MyDocument extends React.Component{
         this.props.init();
     }
 
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.showNotification){
-            openNotification(nextProps.notification);
-            //在开启notification后立即将show置为false,放置本页面props改变时因为show=true而出现多个notification
-            this.props.closeNotification();
-        }
-    }
-
     render(){
         const {loading} = this.props;
         return (
@@ -46,9 +38,6 @@ MyDocument = connect(state=>{
     init(){
         dispatch(action.loadData());
     },
-    closeNotification(){
-        dispatch({type:"MY_DOCUMENT_SHOW_NOTIFICATION",obj:{show:false}});
-    }
 }))(MyDocument);
 
 module.exports = MyDocument;

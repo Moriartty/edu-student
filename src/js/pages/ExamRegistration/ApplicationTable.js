@@ -1,9 +1,13 @@
 import ExFormItem from 'components/ExFormItem';
-import {Button,Form,Icon,Row,Col,Spin,notification} from 'antd';
+import {Button,Form,Icon,Row,Col,Spin} from 'antd';
 import {connect} from 'react-redux';
 import action from 'actions/school-daily/exam-registration';
 
-const ApplicationForm = Form.create()(props=>{
+const ApplicationForm = Form.create({
+    mapPropsToFields:(props)=>{
+
+    }
+})(props=>{
     const {form} = props;
     const {getFieldDecorator} = form;
     return (
@@ -67,26 +71,11 @@ const ApplicationForm = Form.create()(props=>{
     )
 });
 
-const openNotificationWithIcon = (type) => {
-    notification[type]({
-        message: '提交成功',
-        duration:2
-    });
-};
 
 class ApplicationTable extends React.Component{
     constructor(props){
         super(props);
-        this.moduleKey = this.props.activeTab;
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    componentWillReceiveProps(nextProps){
-        if(nextProps.closeApplicationPage){
-            this.props.reloadData();
-            this.removeTab(this.moduleKey);
-            openNotificationWithIcon('success');
-        }
     }
 
     saveFormRef = (form)=>{
@@ -102,24 +91,6 @@ class ApplicationTable extends React.Component{
         })
     }
 
-    removeTab = (targetKey) => {
-        let {panes, activeTab, onTabRemove} = this.props;
-        const index = panes.findIndex(o => o.key==targetKey);
-
-        const isCurrentTab=activeTab==targetKey;
-        if(isCurrentTab) {
-            //是否最后一个，是则激活前一个，否则激活后一个
-            if (index == panes.length - 1) {
-                activeTab = panes[panes.length - 2].key;
-            } else {
-                activeTab = panes[index + 1].key;
-            }
-        }
-        //删除tab
-        panes.splice(index, 1);
-        onTabRemove(panes.concat(), activeTab);
-    };
-
     render(){
         const {appliSubmitting} = this.props;
         return (
@@ -130,7 +101,6 @@ class ApplicationTable extends React.Component{
                             <ApplicationForm ref={this.saveFormRef}/>
                             <div className="footer">
                                 <Button type="primary" onClick={this.handleSubmit}><Icon type="check"/>提交</Button>
-                                <Button type="default">保存</Button>
                             </div>
                         </Col>
                     </Row>
@@ -141,19 +111,12 @@ class ApplicationTable extends React.Component{
 }
 
 ApplicationTable = connect(state=>{
-    const {panes, activeTab} = state.app;
-    const {appliSubmitting,closeApplicationPage} = state['school-daily/exam-registration'];
-    return {panes, activeTab,appliSubmitting,closeApplicationPage};
+    const {appliSubmitting} = state['school-daily/exam-registration'];
+    return {appliSubmitting};
 },dispatch=>({
     submitApplication(params){
         dispatch(action.submitTestApplication(params));
     },
-    onTabRemove(panes, key){
-        dispatch({type:'APP_TAB_CHANGE', panes, key});
-    },
-    reloadData(){
-        dispatch(action.loadData());
-    }
 }))(ApplicationTable);
 
-module.exports = ApplicationTable;
+export default ApplicationTable;

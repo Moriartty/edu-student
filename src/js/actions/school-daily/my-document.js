@@ -25,7 +25,7 @@ actions.editBaseInfo = (params) => (dispatch) => {
             msg:'提交成功',
             show:true
         };
-        dispatch({type:"MY_DOCUMENT_SHOW_NOTIFICATION",obj});
+        dispatch({type:"APP_SHOW_NOTIFICATION",obj});
         dispatch({type:"MY_DOCUMENT_BASEINFO_MODAL_SUBMITTING",submitting:false});
         dispatch({type:"MY_DOCUMENT_BASEINFO_MODAL_VISIBLE",visible:false});
         //提交成功后重新获取baseInfo,这里考虑是否需要重新加载还是用post返回的数据
@@ -68,12 +68,8 @@ actions.deleteExperience = (key) => (dispatch) => {
 actions.editOtherInfo = (params) => (dispatch) => {
     dispatch({type:"MY_DOCUMENT_OTHERINFO_MODAL_SUBMITTING",submitting:true});
     ajax.post('/myDocument/otherInfo/edit',params).then(data=>{
-        const obj = {
-            type:'success',
-            msg:'提交成功',
-            show:true
-        };
-        dispatch({type:"MY_DOCUMENT_SHOW_NOTIFICATION",obj});
+        const obj = {type:'success', msg:'提交成功', show:true};
+        dispatch({type:"APP_SHOW_NOTIFICATION",obj});
         dispatch({type:"MY_DOCUMENT_OTHERINFO_MODAL_SUBMITTING",submitting:false});
         dispatch({type:"MY_DOCUMENT_OTHERINFO_MODAL_VISIBLE",visible:false});
         //提交成功后重新获取baseInfo,这里考虑是否需要重新加载还是用post返回的数据

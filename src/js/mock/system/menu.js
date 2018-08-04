@@ -29,18 +29,18 @@ module.exports = [
                         {id:210, name:'我的申请', module:'my-application'}
                     ]
                 },
-                // {
-                //     id:3,
-                //     name:'新闻资讯',
-                //     list:[
-                //         {id:300, name:'通知公告', module:'news/notice'},
-                //         {id:31, name:'新闻资讯',list:[
-                //             {id:310, name:'滚动图片新闻', module:'news/slider'},
-                //             {id:311, name:'学校新闻', module:'news/school'},
-                //             {id:312, name:'学校文化活动', module:'news/activity'},
-                //         ]}
-                //     ]
-                // },
+                {
+                    id:3,
+                    name:'新闻资讯',
+                    list:[
+                        {id:300, name:'通知公告', module:'news/notice'},
+                        {id:31, name:'新闻资讯',list:[
+                            {id:310, name:'滚动图片新闻', module:'news/slider'},
+                            {id:311, name:'学校新闻', module:'news/school'},
+                            {id:312, name:'学校文化活动', module:'news/activity'},
+                        ]}
+                    ]
+                },
             ]
         }
     },
