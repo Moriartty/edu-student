@@ -23,12 +23,12 @@ export default {
         operations:[],
         page:(cb)=>{require.ensure([],require=>{cb(require('pages/CoursePlan/CourseTable'));});}
     },
-    // "my-homework":{
-    //     name:'我的作业',
-    //     icon:'bars',
-    //     operations:[],
-    //     page:(cb)=>{require.ensure([], require=>{cb(require('pages/MyHomework'));});}
-    // },
+    "school-daily/my-homework":{
+        name:'我的作业',
+        icon:'bars',
+        operations:[],
+        page:(cb)=>{require.ensure([], require=>{cb(require('pages/MyHomework'));});}
+    },
      "school-daily/exam-registration":{
          name:'考试报名',
          icon:'bars',

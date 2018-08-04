@@ -45,7 +45,8 @@ module.exports = [
             'code':'0',
             'data':[
                 'school-daily/course-plan','school-daily/my-daily','school-daily/professional-rules',
-                'school-daily/my-document','school-daily/my-payment','school-daily/exam-registration'
+                'school-daily/my-document','school-daily/my-payment','school-daily/exam-registration',
+                'school-daily/my-homework'
                 // 'inventory', 'members', 'promotion', 'trouble',
                 // 'advertiser', 'rule', 'd-earnings', 'replenish', 'repository', 'repository-in', 'repository-out',
                 // 'repository-return', 'device-map', 'device-log', 'device-ad', 'device-earnings', 'place', 'place-type',

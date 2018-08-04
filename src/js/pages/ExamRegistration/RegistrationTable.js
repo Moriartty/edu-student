@@ -5,6 +5,7 @@ import ExTable from 'components/ExTable';
 import {connect} from 'react-redux';
 import action from 'actions/school-daily/exam-registration';
 import {Badge} from 'antd';
+import moment from 'moment';
 
 const regisStatusText = {0:'不可报名',1:"可报名",2:"已报名"};
 
@@ -24,9 +25,9 @@ class RegistrationTable extends React.Component{
             {title:'考试时间',dataIndex:'duration',render:(val,data)=>{
                     return (
                         <div className='timeItems'>
-                            <p>{val.start}</p>
+                            <p>{moment(val.start).format('YYYY-MM-DD hh:mm')}</p>
                             <p>~</p>
-                            <p>{val.end}</p>
+                            <p>{moment(val.end).format('YYYY-MM-DD hh:mm')}</p>
                         </div>
                     )
             }},

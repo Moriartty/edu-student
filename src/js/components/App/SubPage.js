@@ -19,7 +19,6 @@ class SubPage extends React.Component{
     }
 
     render(){
-        console.log('props',this.props);
         const {show, title, loading, children, bodyStyle, onClose} = this.props;
         return (
             <div className="sub-page display-flex flex-column" style={{display:show?'':'none'}}>

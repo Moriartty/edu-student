@@ -4,6 +4,7 @@ import professionalRules from './professional-rules';
 import myDocuments from './my-document';
 import myPayment from './my-payment';
 import examRegistration from './exam-registration.js';
+import myHomework from './my-homework';
 
 export default {
     'school-daily/course-plan':coursePlan,
@@ -11,5 +12,6 @@ export default {
     'school-daily/professional-rules':professionalRules,
     'school-daily/my-document':myDocuments,
     'school-daily/my-payment':myPayment,
-    'school-daily/exam-registration':examRegistration
+    'school-daily/exam-registration':examRegistration,
+    'school-daily/my-homework':myHomework
 }

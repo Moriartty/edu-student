@@ -10,7 +10,6 @@ let actions = {};
  * search加载数据
  * */
 actions.loadData = (pageNo,pageSize) => (dispatch,getState) => {
-    console.log('aaa');
     const state  = getState()['school-daily/exam-registration'];
     const page = state.page;
     const params = state.searchParams;

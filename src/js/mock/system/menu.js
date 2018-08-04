@@ -14,7 +14,7 @@ module.exports = [
                         {id:100, name:'我的日常', module:'school-daily/my-daily'},
                         {id:110, name:'专业规则', module:'school-daily/professional-rules'},
                         {id:120, name:'课程计划', module:'school-daily/course-plan'},
-                        {id:130, name:'我的作业', module:'my-homework'},
+                        {id:130, name:'我的作业', module:'school-daily/my-homework'},
                         {id:140, name:'考试报名', module:'school-daily/exam-registration'},
                         {id:150, name:'成绩查询', module:'result-inquiry'},
                         {id:160, name:'我的档案', module:'school-daily/my-document'},
