@@ -1,0 +1,80 @@
+@import "vars";
+
+@item-width:250px;
+
+.flow{
+    .ant-tabs-tabpane{
+        padding:16px 24px;
+    }
+
+    .list-item{
+        float: left;
+        width: @item-width;
+        border: 1px solid @primary-3;
+        border-radius: 4px;
+        margin-right:24px;
+        margin-bottom:24px;
+        background: @primary-1;
+
+        .link{
+            display: block;
+            padding:12px;
+        }
+
+        .ant-avatar{
+            background: @primary-5;
+        }
+
+        .ant-list-item-meta-avatar{
+            margin-right:12px;
+        }
+
+        .text-truncate{
+            width: @item-width - 70px;
+        }
+    }
+}
+
+.flow-initiate{
+    .ant-input,.ant-input-group-wrapper,.ant-select,.ant-upload-list{
+        width: 400px;
+    }
+
+    .node-label{
+        text-align: right;
+        padding-top:12px;
+        padding-right:8px;
+        color: #666;
+    }
+
+    .node{
+        float: left;
+        margin-right:16px;
+        margin-bottom:16px;
+
+        .item{
+            position: relative;
+            display: inline-block;
+            background: #f1f1f1;
+            min-width:120px;
+            padding: 8px 24px 8px 8px;
+            border-radius: 5px;
+
+            .close{
+                position: absolute;
+                right:4px;
+                top: 11px;
+                color: red;
+                display: none;
+            }
+
+            &:hover .close{
+                display: block;
+            }
+        }
+
+        &>.anticon{
+            margin-left:16px;
+        }
+    }
+}

@@ -1,8 +1,10 @@
 import news from './news';
+import flow from './flow';
 import schoolDaily from './school-daily';
 //这里的name是默认名称
 export default {
     ...news,
+    ...flow,
     ...schoolDaily,
     home:{
         name:'首页',

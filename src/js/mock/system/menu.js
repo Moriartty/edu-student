@@ -25,6 +25,8 @@ module.exports = [
                     id:2,
                     name:'流程中心',
                     list:[
+                        {id:401, name:'发起申请', module:'flow'},
+                        {id:402, name:'我的申请', module:'flow-apply'},
                         {id:200, name:'毕业申请', module:'graduation-application'},
                         {id:210, name:'我的申请', module:'my-application'}
                     ]
@@ -165,7 +167,8 @@ module.exports = [
                     id:400,
                     name:'流程中心',
                     list:[
-                        {id:404, name:'流程管理', module:'flow-mgr', display:1},
+                        {id:401, name:'发起申请', module:'flow', display:1},
+                        {id:402, name:'我的申请', module:'flow-apply', display:1},
                     ], display:1
                 },
                 {

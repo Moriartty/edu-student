@@ -1,0 +1,33 @@
+@import "vars";
+
+.flow-details{
+    .flow-profile{
+        position: relative;
+
+        .ant-avatar{
+            background: @primary-5;
+            zoom:1.8;
+            float: left;
+        }
+
+        .bd{
+            margin-left:75px;
+        }
+
+        //印章效果
+        img.seal{
+            position: absolute;
+            right: 20px;
+            top: -10px;
+            width: 150px;
+            z-index: 10;
+            -webkit-transition: all .2s;
+
+            &.hide{
+                -webkit-transform: translate3d(-150px,50px,50px) scale(3);
+                transform: translate3d(-150px,50px,50px) scale(3);
+                opacity: 0;
+            }
+        }
+    }
+}

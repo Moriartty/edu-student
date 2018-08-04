@@ -9,7 +9,7 @@ import schoolDaily from './school-daily';
 // import feedback from './feedback';
 //
 // import teaching from './teaching';
-// import flow from './flow';
+import flow from './flow';
 // import news from './news';
 // import system from './system';
 
@@ -20,7 +20,7 @@ export default combineReducers({
     ...schoolDaily,
     // feedback,
     // ...teaching,
-    // ...flow,
+    ...flow,
     // ...news,
     // ...system
 });
