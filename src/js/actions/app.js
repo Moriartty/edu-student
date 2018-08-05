@@ -7,6 +7,7 @@ let action={};
 /**
  * 点点菜单链接加载页面
  * @param module
+ * git test
  */
 action.loadTabPage = module => (dispatch, getState) => {
     const state=getState().app;
