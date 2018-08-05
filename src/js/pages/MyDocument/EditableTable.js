@@ -93,7 +93,7 @@ class EditableTable extends React.Component {
                                                     onClick={() => this.save(form, record.key)}
                                                     style={{ marginRight: 8 }}
                                                 >
-                                                    Save
+                                                    保存
                                                 </a>
                                             )}
                                       </EditableContext.Consumer>
@@ -101,7 +101,7 @@ class EditableTable extends React.Component {
                                           title="确定取消?"
                                           onConfirm={() => this.cancel(record.key)}
                                       >
-                                        <a>Cancel</a>
+                                        <a>取消</a>
                                       </Popconfirm>
                                 </span>
                             ) : (
@@ -112,7 +112,7 @@ class EditableTable extends React.Component {
                                         title="确认删除"
                                         onConfirm={()=>this.delete(record.key)}
                                     >
-                                        <a className="item-delete">Delete</a>
+                                        <a className="item-delete">删除</a>
                                     </Popconfirm>
                                 </div>
 

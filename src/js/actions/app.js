@@ -47,7 +47,7 @@ action.loadTabPage = module => (dispatch, getState) => {
 };
 
 /**
- * 点非菜单链接加载页面,如News
+ * 点非菜单链接加载页面,如News,资讯模块已经移除，可以暂时不用此方法
  * */
 action.loadLinkPage = module => (dispatch,getState) => {
     const state = getState().app;
