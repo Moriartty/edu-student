@@ -60,7 +60,7 @@ class Sidebar extends React.Component {
                         // theme={APP_EDITION=='jianjiao'?'light':'dark'}
                         openKeys={this.state.openKeys}
                         onOpenChange={this.onOpenChange}
-                        selectable={true}
+                        selectable={false}
                         onClick={onClick}
                     >
                         {

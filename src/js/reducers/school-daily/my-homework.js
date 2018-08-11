@@ -11,9 +11,15 @@ const defaultState = {
         pageNo:1,
         pageSize:10
     },
-    homeworkDetail:[],
-    subPageVisible:false,
-    subPageLoading:false,
+    reviewPageData:{},
+    reviewPageVisible:false,
+    reviewPageLoading:false,
+    testPageData:{},
+    testPageVisible:false,
+    testPageLoading:false,
+    // homeworkDetail:[],
+    // subPageVisible:false,
+    // subPageLoading:false,
 };
 export default (state,action) => {
     let newState = {};
@@ -32,14 +38,23 @@ export default (state,action) => {
         case 'MY_HOMEWORK_SEARCHPARAMS_CHANGE':
             newState.searchParams = {...action.params};
             break;
-        case 'MY_HOMEWORK_TOGGLE_SUBPAGE_VISIBLE':
-            newState.subPageVisible = action.visible;
+        case 'MY_HOMEWORK_TOGGLE_REVIEWPAGE_VISIBLE':
+            newState.reviewPageVisible = action.visible;
             break;
-        case 'MY_HOMEWORK_SUBPAGE_LOADING':
-            newState.subPageLoading = action.loading;
+        case 'MY_HOMEWORK_REVIEWPAGE_LOADING':
+            newState.reviewPageLoading = action.loading;
             break;
-        case 'MY_HOMEWORK_SUBPAGE_LOAD':
-            newState.homeworkDetail = action.list;
+        case 'MY_HOMEWORK_REVIEWPAGE_LOAD':
+            newState.reviewPageData = action.data;
+            break;
+        case 'MY_HOMEWORK_TOGGLE_TESTPAGE_VISIBLE':
+            newState.testPageVisible = action.visible;
+            break;
+        case 'MY_HOMEWORK_TESTPAGE_LOADING':
+            newState.testPageLoading = action.loading;
+            break;
+        case 'MY_HOMEWORK_TESTPAGE_LOAD':
+            newState.testPageData = action.data;
             break;
         default:return state||defaultState;
     }

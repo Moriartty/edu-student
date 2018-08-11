@@ -25,12 +25,23 @@ actions.loadData = (pageNo,pageSize) => (dispatch,getState) => {
     })
 };
 /**
- * 加载作业详情
+ * 加载已提交作业详情
  * */
-actions.loadDetail = (id) => (dispatch) => {
-    dispatch({type:'MY_HOMEWORK_SUBPAGE_LOADING',loading:true});
+actions.loadReviewData = (id) => (dispatch) => {
+    dispatch({type:'MY_HOMEWORK_REVIEWPAGE_LOADING',loading:true});
     ajax.get('/myHomework/detail',id).then(data=>{
-        dispatch({type:'MY_HOMEWORK_SUBPAGE_LOADING',loading:false});
+        dispatch({type:'MY_HOMEWORK_REVIEWPAGE_LOAD',data:data});
+        dispatch({type:'MY_HOMEWORK_REVIEWPAGE_LOADING',loading:false});
+    })
+};
+/**
+ * 加载未提交作业数据
+ * */
+actions.loadTestData = (id) => (dispatch) => {
+    dispatch({type:'MY_HOMEWORK_TESTPAGE_LOADING',loading:true});
+    ajax.get('/myHomework/data',id).then(data=>{
+        dispatch({type:'MY_HOMEWORK_TESTPAGE_LOAD',data:data});
+        dispatch({type:'MY_HOMEWORK_TESTPAGE_LOADING',loading:false});
     })
 };
 

@@ -12,6 +12,7 @@ class HomeworkTable extends React.Component{
             {title:'创建者',dataIndex:'creator'},
             {title:'截止日期',dataIndex:'endDate'},
             {title:'完成进度',dataIndex:'progress',render:(val,data)=><div>{val.completeNum}/{val.totalNum}</div>},
+            {title:'提交状态',dataIndex:'hasSubmit',render:(val)=><div>{val===0?<span className='text-danger'>未提交</span>:<span className='text-green'>已提交</span>}</div>},
             {title:'完成情况',dataIndex:'results',render:(val,data)=>{
                 return (
                     <div>
@@ -20,11 +21,6 @@ class HomeworkTable extends React.Component{
                     )
             }}
         ];
-        this.onClick = this.onClick.bind(this);
-    }
-    onClick(record){
-        this.props.openSubPage();
-        this.props.onClick(record)
     }
     render(){
         const {list,loading,page,onChange} = this.props;
@@ -38,7 +34,7 @@ class HomeworkTable extends React.Component{
                 pageSize={page.pageSize}
                 dataCount={page.dataCount}
                 onRow={(recode)=>{
-                    return {onClick:()=>{this.onClick(recode)}}
+                    return {onClick:()=>{this.props.onClick(recode)}}
                 }}
                 onChange={onChange}
             />
@@ -51,7 +47,17 @@ HomeworkTable = connect(state=>{
     return {list,loading,page};
 },dispatch=>({
     onClick(record){
-        dispatch(action.loadDetail(record.id));
+        //根据试卷的提交状态进入答题或详情显示页面
+        switch(record.hasSubmit){
+            case 0:
+                dispatch({type:'MY_HOMEWORK_TOGGLE_TESTPAGE_VISIBLE',visible:true});
+                dispatch(action.loadTestData(record.id));
+                break;
+            case 1:
+                dispatch({type:'MY_HOMEWORK_TOGGLE_REVIEWPAGE_VISIBLE',visible:true});
+                dispatch(action.loadReviewData(record.id));
+                break;
+        }
     },
     onChange(pagination, filters, sorter){
         dispatch(action.loadData(pagination.current, pagination.pageSize));

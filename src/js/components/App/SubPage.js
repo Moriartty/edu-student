@@ -19,7 +19,7 @@ class SubPage extends React.Component{
     }
 
     render(){
-        const {show, title, loading, children, bodyStyle, onClose} = this.props;
+        const {show, title, loading, children, bodyStyle, onClose,header} = this.props;
         return (
             <div className="sub-page display-flex flex-column" style={{display:show?'':'none'}}>
                 <div className="hd">
@@ -27,6 +27,7 @@ class SubPage extends React.Component{
                         <Button onClick={onClose} icon="rollback">返回</Button>
                     </div>
                     <span className="text-lg">{title}</span>
+                    {header}
                 </div>
                 <div className="flex-grow-1 display-flex">
                     <div className="bd flex-grow-1" style={bodyStyle}>

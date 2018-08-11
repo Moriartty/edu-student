@@ -12,3 +12,20 @@ export function objectAppend(obj0, obj){
     }
     return obj0;
 }
+/**
+ * 统一处理（后端）返回的文件路径，如相对路径、全路径等
+ * @param url
+ * @returns {*}
+ */
+export function fixUrl(url) {
+    if(url) {
+        if(url.indexOf('http')!==0&&url.indexOf('blob:')!==0&&url.indexOf('data:')!==0){
+            //头部补上“/”
+            if (url[0] != '/') {
+                url = '/' + url;
+            }
+            url=api.ftpBaseUrl+url;
+        }
+    }
+    return url
+}

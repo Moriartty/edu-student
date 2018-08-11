@@ -97,7 +97,7 @@ class ApplicationTable extends React.Component{
             <div>
                 <Spin spinning={appliSubmitting}>
                     <Row>
-                        <Col span={12}>
+                        <Col offset={4} span={12}>
                             <ApplicationForm ref={this.saveFormRef}/>
                             <div className="footer">
                                 <Button type="primary" onClick={this.handleSubmit}><Icon type="check"/>提交</Button>

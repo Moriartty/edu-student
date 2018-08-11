@@ -37,6 +37,7 @@ class ExamRegistration extends React.Component{
                         <SubPage
                             show={subPageVisible}
                             onClose={this.closeSubPage}
+                            title='考试报名申请'
                         >
                             <ApplicationTable/>
                         </SubPage>:
