@@ -6,5 +6,6 @@ mockList=mockList.concat(require('./my-document'));
 mockList=mockList.concat(require('./my-payment'));
 mockList=mockList.concat(require('./exam-registration'));
 mockList=mockList.concat(require('./my-homework'));
+mockList=mockList.concat(require('./result-inquiry'));
 
 module.exports = mockList;

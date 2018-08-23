@@ -35,12 +35,12 @@ export default {
          operations:[],
          page:(cb)=>{require.ensure([], require=>{cb(require('pages/ExamRegistration'));});}
      },
-    // "result-inquiry":{
-    //     name:'成绩查询',
-    //     icon:'bars',
-    //     operations:[],
-    //     page:(cb)=>{require.ensure([], require=>{cb(require('pages/ResultInquiry'));});}
-    // },
+    "school-daily/result-inquiry":{
+        name:'成绩查询',
+        icon:'bars',
+        operations:[],
+        page:(cb)=>{require.ensure([], require=>{cb(require('pages/ResultInquiry'));});}
+    },
      "school-daily/my-document":{
          name:'我的档案',
          icon:'bars',
